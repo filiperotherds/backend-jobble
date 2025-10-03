@@ -9,15 +9,20 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  name String
-  email String @unique
-  password String
-  avatarUrl String? @map("avatar_url")
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  avatarUrl String?  @map("avatar_url")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  tokens Token[]
+  tokens    Token[]
+  invites   Invite[]
+  member_on Member?
+
+  owns_pro_rganization     ProOrganization?
+  owns_client_organization ClientOrganization?
 }
 
 enum TokenType {
@@ -25,41 +30,62 @@ enum TokenType {
 }
 
 model Token {
-  id String @id @default(uuid())
-  type TokenType
-  createdAt DateTime @default(now()) @map("created_at")
+  id        String    @id @default(uuid())
+  type      TokenType
+  createdAt DateTime  @default(now()) @map("created_at")
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @map("user_id")
 
   @@map("tokens")
 }
 
-enum ProRole {
+enum Role {
   ADMIN
   MEMBER
 }
 
-enum ClientRole {
-  ADMIN
-  MEMBER
+enum OrgType {
+  PRO
+  CLIENT
 }
 
-model ProInvite {
-  id String @id @default(uuid())
-  email String
-  role ProRole
+model Invite {
+  id        String   @id @default(uuid())
+  email     String
+  role      Role
+  type      OrgType
   createdAt DateTime @default(now()) @map("created_at")
 
-  author User? @relation(fields: [authorId], references: [id], onDelete: SetNull)
-  authorId String? @map("author_id")
+  author               User?               @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  authorId             String?             @map("author_id")
+  ProOrganization      ProOrganization?    @relation(fields: [proOrganizationId], references: [id])
+  proOrganizationId    String?
+  ClientOrganization   ClientOrganization? @relation(fields: [clientOrganizationId], references: [id])
+  clientOrganizationId String?
 
-  organization ProOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  organizationId String @map("organization_id")
-
-  @@unique([email, organizationId])
-  @@index([email])
+  @@unique(email)
+  @@index(email)
   @@map("pro_invites")
+}
+
+model Member {
+  id   String  @id @default(uuid())
+  role Role    @default(MEMBER)
+  type OrgType
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique @map("user_id")
+
+  proOrganization   ProOrganization? @relation(fields: [proOrganizationId], references: [id], onDelete: Cascade)
+  proOrganizationId String?          @map("pro_organization_id")
+
+  clientOrganization   ClientOrganization? @relation(fields: [clientOrganizationId], references: [id])
+  clientOrganizationId String?             @map("client_organization_id")
+
+  @@index([proOrganizationId], map: "idx_member_pro_organization_id")
+  @@index([clientOrganizationId], map: "idx_member_client_organization_id")
+  @@map("member")
 }
 
 model ProOrganization {
@@ -73,11 +99,29 @@ model ProOrganization {
   updatedAt                 DateTime @updatedAt @map("updated_at")
 
   owner   User   @relation(fields: [ownerId], references: [id])
-  ownerId String @map("owner_id")
+  ownerId String @unique @map("owner_id")
 
-  invites  Invite[]
-  members  Member[]
-  projects Project[]
+  invites Invite[]
+  members Member[]
 
   @@map("pro_organizations")
+}
+
+model ClientOrganization {
+  id                        String   @id @default(uuid())
+  name                      String
+  slug                      String   @unique
+  domain                    String?  @unique
+  shouldAttachUsersByDomain Boolean  @default(false) @map("should_attach_users_by_domain")
+  avatarUrl                 String?  @map("avatar_url")
+  createdAt                 DateTime @default(now()) @map("created_at")
+  updatedAt                 DateTime @updatedAt @map("updated_at")
+
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId String @unique @map("owner_id")
+
+  invite  Invite[]
+  members Member[]
+
+  @@map("client_organizations")
 }
