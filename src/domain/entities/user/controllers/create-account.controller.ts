@@ -1,6 +1,10 @@
-import { Body, Controller, HttpCode, Post } from '@nestjs/common'
+import { Body, Controller, HttpCode, Post, UsePipes } from '@nestjs/common'
 import { UserService } from '../user.service'
-import type { CreateAccountBodySchema } from '../schema/create-account.schema'
+import {
+  createAccountBodySchema,
+  type CreateAccountBodySchema,
+} from '../schema/create-account.schema'
+import { ZodValidationPipe } from 'src/common/pipes/zod-validation.pipe'
 
 @Controller('/accounts')
 export class CreateAccountController {
@@ -8,6 +12,7 @@ export class CreateAccountController {
 
   @Post()
   @HttpCode(201)
+  @UsePipes(new ZodValidationPipe(createAccountBodySchema))
   async handle(@Body() body: CreateAccountBodySchema) {
     const { name, email, password } = body
 
