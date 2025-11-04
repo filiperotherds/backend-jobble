@@ -158,6 +158,7 @@ model ClientProfile {
 
 model Address {
   id        String   @id @default(uuid())
+  number    String
   street    String
   city      String
   state     String

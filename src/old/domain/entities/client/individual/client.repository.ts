@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { Address, User, UserProfile } from 'generated/prisma'
 import { PrismaService } from 'src/prisma/prisma.service'
 import type { CreateClientAccountBodySchema } from './schema/create-client-account.schema'
-import type { CreateClientAddressBodySchema } from './schema/create-client-address.schema'
+import type { CreateAddressBodySchema } from '../../address/schema/create-address.schema'
 
 @Injectable()
 export class ClientRepository {
@@ -23,7 +23,7 @@ export class ClientRepository {
   }
 
   async createAddress(
-    createAddress: CreateClientAddressBodySchema,
+    createAddress: CreateAddressBodySchema,
     userProfileId: string,
   ): Promise<Address> {
     const { city, country, state, street, zipCode } = createAddress
