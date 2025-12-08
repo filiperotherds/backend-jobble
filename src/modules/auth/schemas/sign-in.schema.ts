@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const signInBodySchema = z.object({
-  identifier: z.string().min(1, 'Missing email or phone number.'),
+  email: z.string().email(),
   password: z.string(),
 })
 

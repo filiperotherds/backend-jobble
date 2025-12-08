@@ -11,8 +11,7 @@ datasource db {
 model User {
   id        String   @id @default(uuid())
   name      String
-  email     String?  @unique
-  phone     String?  @unique
+  email     String   @unique
   password  String
   avatarUrl String?  @map("avatar_url")
   createdAt DateTime @default(now()) @map("created_at")
@@ -84,8 +83,8 @@ model Member {
 
 model Organization {
   id                        String   @id @default(uuid())
-  name                      String
-  slug                      String   @unique
+  name                      String?
+  slug                      String?   @unique
   type                      OrgType
   domain                    String?  @unique
   shouldAttachUsersByDomain Boolean  @default(false) @map("should_attach_users_by_domain")
@@ -228,5 +227,5 @@ enum OrgType {
 
 enum AccountType {
   INDIVIDUAL
-  BUSINESS
+  ORGANIZATION
 }

@@ -9,7 +9,6 @@ import { JwtService } from '@nestjs/jwt'
 import { SignInBodySchema } from './schemas/sign-in.schema'
 import { compare, hash } from 'bcryptjs'
 import { SignUpBodySchema } from './schemas/sign-up.schema'
-import { Slug } from '@/common/value-objects/slug'
 
 type JwtTyp = 'USER' | 'ORG_CLIENT' | 'ORG_PRO'
 
@@ -20,10 +19,10 @@ export class AuthService {
     private jwt: JwtService,
   ) {}
 
-  async singin({ identifier, password }: SignInBodySchema) {
+  async singin({ email, password }: SignInBodySchema) {
     const user = await this.prisma.user.findFirst({
       where: {
-        OR: [{ email: identifier }, { phone: identifier }],
+        email,
       },
       include: {
         userProfile: true,
@@ -41,13 +40,13 @@ export class AuthService {
     })
 
     if (!user) {
-      throw new UnauthorizedException('User credentials do not match')
+      throw new UnauthorizedException('User credentials do not match.')
     }
 
     const isPasswordValid = await compare(password, user.password)
 
     if (!isPasswordValid) {
-      throw new UnauthorizedException('User credentials do not match')
+      throw new UnauthorizedException('User credentials do not match.')
     }
 
     let typ: JwtTyp
@@ -56,7 +55,7 @@ export class AuthService {
       memberId: string | null
       profileId: string | null
       role?: string
-      slug?: string
+      slug?: string | null
     }
 
     if (user.accountType === 'INDIVIDUAL') {
@@ -124,19 +123,10 @@ export class AuthService {
     }
   }
 
-  async singup({
-    name,
-    identifier,
-    password,
-    accountType,
-    orgName,
-    orgType,
-  }: SignUpBodySchema) {
-    const isEmail = identifier.includes('@')
-
+  async singup({ name, email, password, accountType }: SignUpBodySchema) {
     const userExists = await this.prisma.user.findFirst({
       where: {
-        OR: [{ email: identifier }, { phone: identifier }],
+        email,
       },
     })
 
@@ -150,50 +140,76 @@ export class AuthService {
       const user = await tx.user.create({
         data: {
           name,
+          email,
           password: hashedPassword,
           accountType,
-          ...(isEmail ? { email: identifier } : { phone: identifier }),
         },
       })
 
-      if (accountType === 'INDIVIDUAL') {
-        await tx.userProfile.create({
-          data: {
-            userId: user.id,
-          },
-        })
-      } else if (accountType === 'BUSINESS') {
-        if (!orgName || !orgType) {
-          throw new BadRequestException('Missing organization details')
-        }
+      await tx.userProfile.create({
+        data: {
+          userId: user.id,
+        },
+      })
+    })
+  }
 
-        const { slugValue } = await Slug.createFromText(orgName, this.prisma)
+  async organizationSignUp({
+    name,
+    email,
+    password,
+    accountType,
+    orgType,
+  }: SignUpBodySchema) {
+    const userExists = await this.prisma.user.findFirst({
+      where: {
+        email,
+      },
+    })
 
-        const organization = await tx.organization.create({
-          data: {
-            name: orgName,
-            slug: slugValue,
-            type: orgType,
-            ownerId: user.id,
-            members: {
-              create: {
-                userId: user.id,
-                role: 'ADMIN',
-              },
+    if (userExists) {
+      throw new ConflictException('User already exists.')
+    }
+
+    if (!orgType) {
+      throw new BadRequestException('Organization type is required.')
+    }
+
+    const hashedPassword = await hash(password, 8)
+
+    await this.prisma.$transaction(async (tx) => {
+      const user = await tx.user.create({
+        data: {
+          name,
+          email,
+          password: hashedPassword,
+          accountType,
+        },
+      })
+
+      const organization = await tx.organization.create({
+        data: {
+          type: orgType,
+          ownerId: user.id,
+          members: {
+            create: {
+              userId: user.id,
+              role: 'ADMIN',
             },
           },
-        })
+        },
+      })
 
-        if (orgType === 'PROVIDER') {
-          await tx.providerProfile.create({
-            data: { organizationId: organization.id },
-          })
-        } else {
-          await tx.clientProfile.create({
-            data: { organizationId: organization.id },
-          })
-        }
-      }
+      await tx.providerProfile.create({
+        data: { organizationId: organization.id },
+      })
+
+      // await tx.user.update({
+      //   where: { id: user.id },
+      //   data: {
+      //     organizationOwner: { connect: { id: organization.id } },
+      //   },
+      // })
     })
   }
 }
