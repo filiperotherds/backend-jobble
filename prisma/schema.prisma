@@ -1,11 +1,10 @@
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/client"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -84,7 +83,7 @@ model Member {
 model Organization {
   id                        String   @id @default(uuid())
   name                      String?
-  slug                      String?   @unique
+  slug                      String?  @unique
   type                      OrgType
   domain                    String?  @unique
   shouldAttachUsersByDomain Boolean  @default(false) @map("should_attach_users_by_domain")
