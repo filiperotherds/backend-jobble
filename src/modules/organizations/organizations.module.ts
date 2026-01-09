@@ -9,4 +9,4 @@ import { OrganizationsService } from './organizations.service'
   providers: [OrganizationsService, JwtAuthGuard, PrismaService],
   exports: [OrganizationsService],
 })
-export class UsersModule {}
+export class OrganizationsModule {}
