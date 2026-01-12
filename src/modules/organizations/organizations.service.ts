@@ -10,6 +10,7 @@ export class OrganizationsService {
       select: {
         name: true,
         avatarUrl: true,
+        type: true,
       },
       where: { id },
     })

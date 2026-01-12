@@ -9,6 +9,8 @@ import { JwtService } from '@nestjs/jwt'
 import { SignInBodySchema } from './schemas/sign-in.schema'
 import { compare, hash } from 'bcryptjs'
 import { SignUpBodySchema } from './schemas/sign-up.schema'
+import { CurrentUser } from '@/common/decorators/current-user-decorator'
+import { TokenPayload } from './strategies/jwt.strategy'
 
 type JwtTyp = 'USER' | 'ORG_CLIENT' | 'ORG_PRO'
 
@@ -211,5 +213,9 @@ export class AuthService {
       //   },
       // })
     })
+  }
+
+  async getUserMembership(@CurrentUser() { sub }: TokenPayload) {
+    
   }
 }

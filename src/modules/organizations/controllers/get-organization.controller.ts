@@ -20,6 +20,11 @@ export class GetOrganizationController {
     const organization =
       await this.organizationsService.getOrganizationById(orgId)
 
-    return organization
+    const membership = {
+      organization,
+      role: ctx.role!,
+    }
+
+    return membership
   }
 }
