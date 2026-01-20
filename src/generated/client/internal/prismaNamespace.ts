@@ -1400,7 +1400,7 @@ export type MemberScalarFieldEnum = (typeof MemberScalarFieldEnum)[keyof typeof 
 export const OrganizationScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  slug: 'slug',
+  cnpj: 'cnpj',
   type: 'type',
   domain: 'domain',
   shouldAttachUsersByDomain: 'shouldAttachUsersByDomain',

@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class OrganizationsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async getOrganizationById(id: string) {
     const organization = await this.prisma.organization.findUnique({
@@ -11,6 +11,7 @@ export class OrganizationsService {
         name: true,
         avatarUrl: true,
         type: true,
+        cnpj: true,
       },
       where: { id },
     })

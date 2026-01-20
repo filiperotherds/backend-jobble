@@ -83,7 +83,7 @@ model Member {
 model Organization {
   id                        String   @id @default(uuid())
   name                      String?
-  slug                      String?  @unique
+  cnpj                      String?  @unique
   type                      OrgType
   domain                    String?  @unique
   shouldAttachUsersByDomain Boolean  @default(false) @map("should_attach_users_by_domain")
@@ -100,12 +100,13 @@ model Organization {
   clientProfile   ClientProfile?
   providerProfile ProviderProfile?
 
-  @@index([slug])
+  @@index([cnpj])
   @@map("organization")
 }
 
 model ProviderProfile {
-  id        String     @id @default(uuid())
+  id String @id @default(uuid())
+
   estimates Estimate[]
   projects  Project[]
   services  Service[]  @relation("ProviderProfileToService")

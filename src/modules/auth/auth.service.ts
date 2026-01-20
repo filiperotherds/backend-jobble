@@ -19,7 +19,7 @@ export class AuthService {
   constructor(
     private prisma: PrismaService,
     private jwt: JwtService,
-  ) {}
+  ) { }
 
   async singin({ email, password }: SignInBodySchema) {
     const user = await this.prisma.user.findFirst({
@@ -57,7 +57,6 @@ export class AuthService {
       memberId: string | null
       profileId: string | null
       role?: string
-      slug?: string | null
     }
 
     if (user.accountType === 'INDIVIDUAL') {
@@ -93,7 +92,6 @@ export class AuthService {
           memberId: user.member.id,
           profileId: org.providerProfile.id,
           role: user.member.role,
-          slug: org.slug,
         }
       } else {
         if (!org.clientProfile) {
@@ -106,7 +104,6 @@ export class AuthService {
           memberId: user.member.id,
           profileId: org.clientProfile.id,
           role: user.member.role,
-          slug: org.slug,
         }
       }
     }
@@ -216,6 +213,6 @@ export class AuthService {
   }
 
   async getUserMembership(@CurrentUser() { sub }: TokenPayload) {
-    
+
   }
 }
