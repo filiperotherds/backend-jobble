@@ -206,11 +206,11 @@ export type UserWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   accountType?: Prisma.EnumAccountTypeFilter<"User"> | $Enums.AccountType
-  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
-  member?: Prisma.XOR<Prisma.MemberNullableScalarRelationFilter, Prisma.MemberWhereInput> | null
   invites?: Prisma.InviteListRelationFilter
+  member?: Prisma.XOR<Prisma.MemberNullableScalarRelationFilter, Prisma.MemberWhereInput> | null
   organizationOwner?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
   tokens?: Prisma.TokenListRelationFilter
+  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -222,11 +222,11 @@ export type UserOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   accountType?: Prisma.SortOrder
-  userProfile?: Prisma.UserProfileOrderByWithRelationInput
-  member?: Prisma.MemberOrderByWithRelationInput
   invites?: Prisma.InviteOrderByRelationAggregateInput
+  member?: Prisma.MemberOrderByWithRelationInput
   organizationOwner?: Prisma.OrganizationOrderByWithRelationInput
   tokens?: Prisma.TokenOrderByRelationAggregateInput
+  userProfile?: Prisma.UserProfileOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -241,11 +241,11 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   accountType?: Prisma.EnumAccountTypeFilter<"User"> | $Enums.AccountType
-  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
-  member?: Prisma.XOR<Prisma.MemberNullableScalarRelationFilter, Prisma.MemberWhereInput> | null
   invites?: Prisma.InviteListRelationFilter
+  member?: Prisma.XOR<Prisma.MemberNullableScalarRelationFilter, Prisma.MemberWhereInput> | null
   organizationOwner?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
   tokens?: Prisma.TokenListRelationFilter
+  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -285,11 +285,11 @@ export type UserCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
-  member?: Prisma.MemberCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutAuthorInput
+  member?: Prisma.MemberCreateNestedOneWithoutUserInput
   organizationOwner?: Prisma.OrganizationCreateNestedOneWithoutOwnerInput
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -301,11 +301,11 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
-  member?: Prisma.MemberUncheckedCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutAuthorInput
+  member?: Prisma.MemberUncheckedCreateNestedOneWithoutUserInput
   organizationOwner?: Prisma.OrganizationUncheckedCreateNestedOneWithoutOwnerInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -317,11 +317,11 @@ export type UserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
-  member?: Prisma.MemberUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutAuthorNestedInput
+  member?: Prisma.MemberUpdateOneWithoutUserNestedInput
   organizationOwner?: Prisma.OrganizationUpdateOneWithoutOwnerNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -333,11 +333,11 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
-  member?: Prisma.MemberUncheckedUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutAuthorNestedInput
+  member?: Prisma.MemberUncheckedUpdateOneWithoutUserNestedInput
   organizationOwner?: Prisma.OrganizationUncheckedUpdateOneWithoutOwnerNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -513,8 +513,8 @@ export type UserCreateWithoutUserProfileInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  member?: Prisma.MemberCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutAuthorInput
+  member?: Prisma.MemberCreateNestedOneWithoutUserInput
   organizationOwner?: Prisma.OrganizationCreateNestedOneWithoutOwnerInput
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
 }
@@ -528,8 +528,8 @@ export type UserUncheckedCreateWithoutUserProfileInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  member?: Prisma.MemberUncheckedCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutAuthorInput
+  member?: Prisma.MemberUncheckedCreateNestedOneWithoutUserInput
   organizationOwner?: Prisma.OrganizationUncheckedCreateNestedOneWithoutOwnerInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
 }
@@ -559,8 +559,8 @@ export type UserUpdateWithoutUserProfileInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  member?: Prisma.MemberUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutAuthorNestedInput
+  member?: Prisma.MemberUpdateOneWithoutUserNestedInput
   organizationOwner?: Prisma.OrganizationUpdateOneWithoutOwnerNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
 }
@@ -574,8 +574,8 @@ export type UserUncheckedUpdateWithoutUserProfileInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  member?: Prisma.MemberUncheckedUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutAuthorNestedInput
+  member?: Prisma.MemberUncheckedUpdateOneWithoutUserNestedInput
   organizationOwner?: Prisma.OrganizationUncheckedUpdateOneWithoutOwnerNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -589,10 +589,10 @@ export type UserCreateWithoutTokensInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
-  member?: Prisma.MemberCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutAuthorInput
+  member?: Prisma.MemberCreateNestedOneWithoutUserInput
   organizationOwner?: Prisma.OrganizationCreateNestedOneWithoutOwnerInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTokensInput = {
@@ -604,10 +604,10 @@ export type UserUncheckedCreateWithoutTokensInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
-  member?: Prisma.MemberUncheckedCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutAuthorInput
+  member?: Prisma.MemberUncheckedCreateNestedOneWithoutUserInput
   organizationOwner?: Prisma.OrganizationUncheckedCreateNestedOneWithoutOwnerInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTokensInput = {
@@ -635,10 +635,10 @@ export type UserUpdateWithoutTokensInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
-  member?: Prisma.MemberUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutAuthorNestedInput
+  member?: Prisma.MemberUpdateOneWithoutUserNestedInput
   organizationOwner?: Prisma.OrganizationUpdateOneWithoutOwnerNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTokensInput = {
@@ -650,10 +650,10 @@ export type UserUncheckedUpdateWithoutTokensInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
-  member?: Prisma.MemberUncheckedUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutAuthorNestedInput
+  member?: Prisma.MemberUncheckedUpdateOneWithoutUserNestedInput
   organizationOwner?: Prisma.OrganizationUncheckedUpdateOneWithoutOwnerNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInvitesInput = {
@@ -665,10 +665,10 @@ export type UserCreateWithoutInvitesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
   member?: Prisma.MemberCreateNestedOneWithoutUserInput
   organizationOwner?: Prisma.OrganizationCreateNestedOneWithoutOwnerInput
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInvitesInput = {
@@ -680,10 +680,10 @@ export type UserUncheckedCreateWithoutInvitesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
   member?: Prisma.MemberUncheckedCreateNestedOneWithoutUserInput
   organizationOwner?: Prisma.OrganizationUncheckedCreateNestedOneWithoutOwnerInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInvitesInput = {
@@ -711,10 +711,10 @@ export type UserUpdateWithoutInvitesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
   member?: Prisma.MemberUpdateOneWithoutUserNestedInput
   organizationOwner?: Prisma.OrganizationUpdateOneWithoutOwnerNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInvitesInput = {
@@ -726,10 +726,10 @@ export type UserUncheckedUpdateWithoutInvitesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
   member?: Prisma.MemberUncheckedUpdateOneWithoutUserNestedInput
   organizationOwner?: Prisma.OrganizationUncheckedUpdateOneWithoutOwnerNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMemberInput = {
@@ -741,10 +741,10 @@ export type UserCreateWithoutMemberInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutAuthorInput
   organizationOwner?: Prisma.OrganizationCreateNestedOneWithoutOwnerInput
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMemberInput = {
@@ -756,10 +756,10 @@ export type UserUncheckedCreateWithoutMemberInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutAuthorInput
   organizationOwner?: Prisma.OrganizationUncheckedCreateNestedOneWithoutOwnerInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMemberInput = {
@@ -787,10 +787,10 @@ export type UserUpdateWithoutMemberInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutAuthorNestedInput
   organizationOwner?: Prisma.OrganizationUpdateOneWithoutOwnerNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMemberInput = {
@@ -802,10 +802,10 @@ export type UserUncheckedUpdateWithoutMemberInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutAuthorNestedInput
   organizationOwner?: Prisma.OrganizationUncheckedUpdateOneWithoutOwnerNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutOrganizationOwnerInput = {
@@ -817,10 +817,10 @@ export type UserCreateWithoutOrganizationOwnerInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
-  member?: Prisma.MemberCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutAuthorInput
+  member?: Prisma.MemberCreateNestedOneWithoutUserInput
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOrganizationOwnerInput = {
@@ -832,10 +832,10 @@ export type UserUncheckedCreateWithoutOrganizationOwnerInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   accountType?: $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
-  member?: Prisma.MemberUncheckedCreateNestedOneWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutAuthorInput
+  member?: Prisma.MemberUncheckedCreateNestedOneWithoutUserInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
+  userProfile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOrganizationOwnerInput = {
@@ -863,10 +863,10 @@ export type UserUpdateWithoutOrganizationOwnerInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
-  member?: Prisma.MemberUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutAuthorNestedInput
+  member?: Prisma.MemberUpdateOneWithoutUserNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrganizationOwnerInput = {
@@ -878,10 +878,10 @@ export type UserUncheckedUpdateWithoutOrganizationOwnerInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
-  member?: Prisma.MemberUncheckedUpdateOneWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutAuthorNestedInput
+  member?: Prisma.MemberUncheckedUpdateOneWithoutUserNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
+  userProfile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
 }
 
 
@@ -933,11 +933,11 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   accountType?: boolean
-  userProfile?: boolean | Prisma.User$userProfileArgs<ExtArgs>
-  member?: boolean | Prisma.User$memberArgs<ExtArgs>
   invites?: boolean | Prisma.User$invitesArgs<ExtArgs>
+  member?: boolean | Prisma.User$memberArgs<ExtArgs>
   organizationOwner?: boolean | Prisma.User$organizationOwnerArgs<ExtArgs>
   tokens?: boolean | Prisma.User$tokensArgs<ExtArgs>
+  userProfile?: boolean | Prisma.User$userProfileArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -976,11 +976,11 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "avatarUrl" | "createdAt" | "updatedAt" | "accountType", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  userProfile?: boolean | Prisma.User$userProfileArgs<ExtArgs>
-  member?: boolean | Prisma.User$memberArgs<ExtArgs>
   invites?: boolean | Prisma.User$invitesArgs<ExtArgs>
+  member?: boolean | Prisma.User$memberArgs<ExtArgs>
   organizationOwner?: boolean | Prisma.User$organizationOwnerArgs<ExtArgs>
   tokens?: boolean | Prisma.User$tokensArgs<ExtArgs>
+  userProfile?: boolean | Prisma.User$userProfileArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -989,11 +989,11 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    userProfile: Prisma.$UserProfilePayload<ExtArgs> | null
-    member: Prisma.$MemberPayload<ExtArgs> | null
     invites: Prisma.$InvitePayload<ExtArgs>[]
+    member: Prisma.$MemberPayload<ExtArgs> | null
     organizationOwner: Prisma.$OrganizationPayload<ExtArgs> | null
     tokens: Prisma.$TokenPayload<ExtArgs>[]
+    userProfile: Prisma.$UserProfilePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1398,11 +1398,11 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  userProfile<T extends Prisma.User$userProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userProfileArgs<ExtArgs>>): Prisma.Prisma__UserProfileClient<runtime.Types.Result.GetResult<Prisma.$UserProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  member<T extends Prisma.User$memberArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$memberArgs<ExtArgs>>): Prisma.Prisma__MemberClient<runtime.Types.Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   invites<T extends Prisma.User$invitesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$invitesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  member<T extends Prisma.User$memberArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$memberArgs<ExtArgs>>): Prisma.Prisma__MemberClient<runtime.Types.Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   organizationOwner<T extends Prisma.User$organizationOwnerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$organizationOwnerArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   tokens<T extends Prisma.User$tokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$tokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userProfile<T extends Prisma.User$userProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userProfileArgs<ExtArgs>>): Prisma.Prisma__UserProfileClient<runtime.Types.Result.GetResult<Prisma.$UserProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1828,44 +1828,6 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.userProfile
- */
-export type User$userProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the UserProfile
-   */
-  select?: Prisma.UserProfileSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the UserProfile
-   */
-  omit?: Prisma.UserProfileOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserProfileInclude<ExtArgs> | null
-  where?: Prisma.UserProfileWhereInput
-}
-
-/**
- * User.member
- */
-export type User$memberArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Member
-   */
-  select?: Prisma.MemberSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Member
-   */
-  omit?: Prisma.MemberOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MemberInclude<ExtArgs> | null
-  where?: Prisma.MemberWhereInput
-}
-
-/**
  * User.invites
  */
 export type User$invitesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1887,6 +1849,25 @@ export type User$invitesArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.InviteScalarFieldEnum | Prisma.InviteScalarFieldEnum[]
+}
+
+/**
+ * User.member
+ */
+export type User$memberArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Member
+   */
+  select?: Prisma.MemberSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Member
+   */
+  omit?: Prisma.MemberOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MemberInclude<ExtArgs> | null
+  where?: Prisma.MemberWhereInput
 }
 
 /**
@@ -1930,6 +1911,25 @@ export type User$tokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.TokenScalarFieldEnum | Prisma.TokenScalarFieldEnum[]
+}
+
+/**
+ * User.userProfile
+ */
+export type User$userProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserProfile
+   */
+  select?: Prisma.UserProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserProfile
+   */
+  omit?: Prisma.UserProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserProfileInclude<ExtArgs> | null
+  where?: Prisma.UserProfileWhereInput
 }
 
 /**

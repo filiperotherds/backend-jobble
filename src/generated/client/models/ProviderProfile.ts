@@ -159,18 +159,18 @@ export type ProviderProfileWhereInput = {
   id?: Prisma.StringFilter<"ProviderProfile"> | string
   organizationId?: Prisma.StringFilter<"ProviderProfile"> | string
   estimates?: Prisma.EstimateListRelationFilter
+  organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
   projects?: Prisma.ProjectListRelationFilter
   services?: Prisma.ServiceListRelationFilter
-  organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
 }
 
 export type ProviderProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   estimates?: Prisma.EstimateOrderByRelationAggregateInput
+  organization?: Prisma.OrganizationOrderByWithRelationInput
   projects?: Prisma.ProjectOrderByRelationAggregateInput
   services?: Prisma.ServiceOrderByRelationAggregateInput
-  organization?: Prisma.OrganizationOrderByWithRelationInput
 }
 
 export type ProviderProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -180,9 +180,9 @@ export type ProviderProfileWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ProviderProfileWhereInput[]
   NOT?: Prisma.ProviderProfileWhereInput | Prisma.ProviderProfileWhereInput[]
   estimates?: Prisma.EstimateListRelationFilter
+  organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
   projects?: Prisma.ProjectListRelationFilter
   services?: Prisma.ServiceListRelationFilter
-  organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
 }, "id" | "organizationId">
 
 export type ProviderProfileOrderByWithAggregationInput = {
@@ -204,9 +204,9 @@ export type ProviderProfileScalarWhereWithAggregatesInput = {
 export type ProviderProfileCreateInput = {
   id?: string
   estimates?: Prisma.EstimateCreateNestedManyWithoutProviderProfileInput
+  organization: Prisma.OrganizationCreateNestedOneWithoutProviderProfileInput
   projects?: Prisma.ProjectCreateNestedManyWithoutProviderProfileInput
   services?: Prisma.ServiceCreateNestedManyWithoutProviderProfileInput
-  organization: Prisma.OrganizationCreateNestedOneWithoutProviderProfileInput
 }
 
 export type ProviderProfileUncheckedCreateInput = {
@@ -220,9 +220,9 @@ export type ProviderProfileUncheckedCreateInput = {
 export type ProviderProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   estimates?: Prisma.EstimateUpdateManyWithoutProviderProfileNestedInput
+  organization?: Prisma.OrganizationUpdateOneRequiredWithoutProviderProfileNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutProviderProfileNestedInput
   services?: Prisma.ServiceUpdateManyWithoutProviderProfileNestedInput
-  organization?: Prisma.OrganizationUpdateOneRequiredWithoutProviderProfileNestedInput
 }
 
 export type ProviderProfileUncheckedUpdateInput = {
@@ -426,8 +426,8 @@ export type ProviderProfileUncheckedUpdateWithoutOrganizationInput = {
 export type ProviderProfileCreateWithoutServicesInput = {
   id?: string
   estimates?: Prisma.EstimateCreateNestedManyWithoutProviderProfileInput
-  projects?: Prisma.ProjectCreateNestedManyWithoutProviderProfileInput
   organization: Prisma.OrganizationCreateNestedOneWithoutProviderProfileInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutProviderProfileInput
 }
 
 export type ProviderProfileUncheckedCreateWithoutServicesInput = {
@@ -469,8 +469,8 @@ export type ProviderProfileScalarWhereInput = {
 export type ProviderProfileCreateWithoutProjectsInput = {
   id?: string
   estimates?: Prisma.EstimateCreateNestedManyWithoutProviderProfileInput
-  services?: Prisma.ServiceCreateNestedManyWithoutProviderProfileInput
   organization: Prisma.OrganizationCreateNestedOneWithoutProviderProfileInput
+  services?: Prisma.ServiceCreateNestedManyWithoutProviderProfileInput
 }
 
 export type ProviderProfileUncheckedCreateWithoutProjectsInput = {
@@ -499,8 +499,8 @@ export type ProviderProfileUpdateToOneWithWhereWithoutProjectsInput = {
 export type ProviderProfileUpdateWithoutProjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   estimates?: Prisma.EstimateUpdateManyWithoutProviderProfileNestedInput
-  services?: Prisma.ServiceUpdateManyWithoutProviderProfileNestedInput
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutProviderProfileNestedInput
+  services?: Prisma.ServiceUpdateManyWithoutProviderProfileNestedInput
 }
 
 export type ProviderProfileUncheckedUpdateWithoutProjectsInput = {
@@ -512,9 +512,9 @@ export type ProviderProfileUncheckedUpdateWithoutProjectsInput = {
 
 export type ProviderProfileCreateWithoutEstimatesInput = {
   id?: string
+  organization: Prisma.OrganizationCreateNestedOneWithoutProviderProfileInput
   projects?: Prisma.ProjectCreateNestedManyWithoutProviderProfileInput
   services?: Prisma.ServiceCreateNestedManyWithoutProviderProfileInput
-  organization: Prisma.OrganizationCreateNestedOneWithoutProviderProfileInput
 }
 
 export type ProviderProfileUncheckedCreateWithoutEstimatesInput = {
@@ -542,9 +542,9 @@ export type ProviderProfileUpdateToOneWithWhereWithoutEstimatesInput = {
 
 export type ProviderProfileUpdateWithoutEstimatesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  organization?: Prisma.OrganizationUpdateOneRequiredWithoutProviderProfileNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutProviderProfileNestedInput
   services?: Prisma.ServiceUpdateManyWithoutProviderProfileNestedInput
-  organization?: Prisma.OrganizationUpdateOneRequiredWithoutProviderProfileNestedInput
 }
 
 export type ProviderProfileUncheckedUpdateWithoutEstimatesInput = {
@@ -557,8 +557,8 @@ export type ProviderProfileUncheckedUpdateWithoutEstimatesInput = {
 export type ProviderProfileUpdateWithoutServicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   estimates?: Prisma.EstimateUpdateManyWithoutProviderProfileNestedInput
-  projects?: Prisma.ProjectUpdateManyWithoutProviderProfileNestedInput
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutProviderProfileNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutProviderProfileNestedInput
 }
 
 export type ProviderProfileUncheckedUpdateWithoutServicesInput = {
@@ -626,9 +626,9 @@ export type ProviderProfileSelect<ExtArgs extends runtime.Types.Extensions.Inter
   id?: boolean
   organizationId?: boolean
   estimates?: boolean | Prisma.ProviderProfile$estimatesArgs<ExtArgs>
+  organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   projects?: boolean | Prisma.ProviderProfile$projectsArgs<ExtArgs>
   services?: boolean | Prisma.ProviderProfile$servicesArgs<ExtArgs>
-  organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.ProviderProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["providerProfile"]>
 
@@ -652,9 +652,9 @@ export type ProviderProfileSelectScalar = {
 export type ProviderProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId", ExtArgs["result"]["providerProfile"]>
 export type ProviderProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   estimates?: boolean | Prisma.ProviderProfile$estimatesArgs<ExtArgs>
+  organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   projects?: boolean | Prisma.ProviderProfile$projectsArgs<ExtArgs>
   services?: boolean | Prisma.ProviderProfile$servicesArgs<ExtArgs>
-  organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.ProviderProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProviderProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -668,9 +668,9 @@ export type $ProviderProfilePayload<ExtArgs extends runtime.Types.Extensions.Int
   name: "ProviderProfile"
   objects: {
     estimates: Prisma.$EstimatePayload<ExtArgs>[]
+    organization: Prisma.$OrganizationPayload<ExtArgs>
     projects: Prisma.$ProjectPayload<ExtArgs>[]
     services: Prisma.$ServicePayload<ExtArgs>[]
-    organization: Prisma.$OrganizationPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1070,9 +1070,9 @@ readonly fields: ProviderProfileFieldRefs;
 export interface Prisma__ProviderProfileClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   estimates<T extends Prisma.ProviderProfile$estimatesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProviderProfile$estimatesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EstimatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  organization<T extends Prisma.OrganizationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrganizationDefaultArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   projects<T extends Prisma.ProviderProfile$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProviderProfile$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   services<T extends Prisma.ProviderProfile$servicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProviderProfile$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  organization<T extends Prisma.OrganizationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrganizationDefaultArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

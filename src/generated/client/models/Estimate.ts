@@ -252,8 +252,8 @@ export type EstimateWhereInput = {
   validity?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
   projectId?: Prisma.StringFilter<"Estimate"> | string
   providerProfileId?: Prisma.StringNullableFilter<"Estimate"> | string | null
-  project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
   providerProfile?: Prisma.XOR<Prisma.ProviderProfileNullableScalarRelationFilter, Prisma.ProviderProfileWhereInput> | null
+  project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
 }
 
 export type EstimateOrderByWithRelationInput = {
@@ -266,8 +266,8 @@ export type EstimateOrderByWithRelationInput = {
   validity?: Prisma.SortOrderInput | Prisma.SortOrder
   projectId?: Prisma.SortOrder
   providerProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
-  project?: Prisma.ProjectOrderByWithRelationInput
   providerProfile?: Prisma.ProviderProfileOrderByWithRelationInput
+  project?: Prisma.ProjectOrderByWithRelationInput
 }
 
 export type EstimateWhereUniqueInput = Prisma.AtLeast<{
@@ -283,8 +283,8 @@ export type EstimateWhereUniqueInput = Prisma.AtLeast<{
   validity?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
   projectId?: Prisma.StringFilter<"Estimate"> | string
   providerProfileId?: Prisma.StringNullableFilter<"Estimate"> | string | null
-  project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
   providerProfile?: Prisma.XOR<Prisma.ProviderProfileNullableScalarRelationFilter, Prisma.ProviderProfileWhereInput> | null
+  project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
 }, "id">
 
 export type EstimateOrderByWithAggregationInput = {
@@ -327,8 +327,8 @@ export type EstimateCreateInput = {
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
   validity?: Date | string | null
-  project: Prisma.ProjectCreateNestedOneWithoutEstimateInput
   providerProfile?: Prisma.ProviderProfileCreateNestedOneWithoutEstimatesInput
+  project: Prisma.ProjectCreateNestedOneWithoutEstimateInput
 }
 
 export type EstimateUncheckedCreateInput = {
@@ -351,8 +351,8 @@ export type EstimateUpdateInput = {
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  project?: Prisma.ProjectUpdateOneRequiredWithoutEstimateNestedInput
   providerProfile?: Prisma.ProviderProfileUpdateOneWithoutEstimatesNestedInput
+  project?: Prisma.ProjectUpdateOneRequiredWithoutEstimateNestedInput
 }
 
 export type EstimateUncheckedUpdateInput = {
@@ -768,8 +768,8 @@ export type EstimateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   validity?: boolean
   projectId?: boolean
   providerProfileId?: boolean
-  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   providerProfile?: boolean | Prisma.Estimate$providerProfileArgs<ExtArgs>
+  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["estimate"]>
 
 export type EstimateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -782,8 +782,8 @@ export type EstimateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   validity?: boolean
   projectId?: boolean
   providerProfileId?: boolean
-  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   providerProfile?: boolean | Prisma.Estimate$providerProfileArgs<ExtArgs>
+  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["estimate"]>
 
 export type EstimateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -796,8 +796,8 @@ export type EstimateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   validity?: boolean
   projectId?: boolean
   providerProfileId?: boolean
-  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   providerProfile?: boolean | Prisma.Estimate$providerProfileArgs<ExtArgs>
+  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["estimate"]>
 
 export type EstimateSelectScalar = {
@@ -814,23 +814,23 @@ export type EstimateSelectScalar = {
 
 export type EstimateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "description" | "duration" | "value" | "status" | "createdAt" | "validity" | "projectId" | "providerProfileId", ExtArgs["result"]["estimate"]>
 export type EstimateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   providerProfile?: boolean | Prisma.Estimate$providerProfileArgs<ExtArgs>
+  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }
 export type EstimateIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   providerProfile?: boolean | Prisma.Estimate$providerProfileArgs<ExtArgs>
+  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }
 export type EstimateIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   providerProfile?: boolean | Prisma.Estimate$providerProfileArgs<ExtArgs>
+  project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }
 
 export type $EstimatePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Estimate"
   objects: {
-    project: Prisma.$ProjectPayload<ExtArgs>
     providerProfile: Prisma.$ProviderProfilePayload<ExtArgs> | null
+    project: Prisma.$ProjectPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1236,8 +1236,8 @@ readonly fields: EstimateFieldRefs;
  */
 export interface Prisma__EstimateClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  project<T extends Prisma.ProjectDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProjectDefaultArgs<ExtArgs>>): Prisma.Prisma__ProjectClient<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   providerProfile<T extends Prisma.Estimate$providerProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Estimate$providerProfileArgs<ExtArgs>>): Prisma.Prisma__ProviderProfileClient<runtime.Types.Result.GetResult<Prisma.$ProviderProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  project<T extends Prisma.ProjectDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProjectDefaultArgs<ExtArgs>>): Prisma.Prisma__ProjectClient<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

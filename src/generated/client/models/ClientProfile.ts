@@ -158,15 +158,15 @@ export type ClientProfileWhereInput = {
   NOT?: Prisma.ClientProfileWhereInput | Prisma.ClientProfileWhereInput[]
   id?: Prisma.StringFilter<"ClientProfile"> | string
   organizationId?: Prisma.StringFilter<"ClientProfile"> | string
-  projects?: Prisma.ProjectListRelationFilter
   organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
+  projects?: Prisma.ProjectListRelationFilter
 }
 
 export type ClientProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
-  projects?: Prisma.ProjectOrderByRelationAggregateInput
   organization?: Prisma.OrganizationOrderByWithRelationInput
+  projects?: Prisma.ProjectOrderByRelationAggregateInput
 }
 
 export type ClientProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -175,8 +175,8 @@ export type ClientProfileWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ClientProfileWhereInput | Prisma.ClientProfileWhereInput[]
   OR?: Prisma.ClientProfileWhereInput[]
   NOT?: Prisma.ClientProfileWhereInput | Prisma.ClientProfileWhereInput[]
-  projects?: Prisma.ProjectListRelationFilter
   organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
+  projects?: Prisma.ProjectListRelationFilter
 }, "id" | "organizationId">
 
 export type ClientProfileOrderByWithAggregationInput = {
@@ -197,8 +197,8 @@ export type ClientProfileScalarWhereWithAggregatesInput = {
 
 export type ClientProfileCreateInput = {
   id?: string
-  projects?: Prisma.ProjectCreateNestedManyWithoutClientProfileInput
   organization: Prisma.OrganizationCreateNestedOneWithoutClientProfileInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutClientProfileInput
 }
 
 export type ClientProfileUncheckedCreateInput = {
@@ -209,8 +209,8 @@ export type ClientProfileUncheckedCreateInput = {
 
 export type ClientProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  projects?: Prisma.ProjectUpdateManyWithoutClientProfileNestedInput
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutClientProfileNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutClientProfileNestedInput
 }
 
 export type ClientProfileUncheckedUpdateInput = {
@@ -407,8 +407,8 @@ export type ClientProfileCountOutputTypeCountProjectsArgs<ExtArgs extends runtim
 export type ClientProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   organizationId?: boolean
-  projects?: boolean | Prisma.ClientProfile$projectsArgs<ExtArgs>
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
+  projects?: boolean | Prisma.ClientProfile$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.ClientProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["clientProfile"]>
 
@@ -431,8 +431,8 @@ export type ClientProfileSelectScalar = {
 
 export type ClientProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId", ExtArgs["result"]["clientProfile"]>
 export type ClientProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  projects?: boolean | Prisma.ClientProfile$projectsArgs<ExtArgs>
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
+  projects?: boolean | Prisma.ClientProfile$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.ClientProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ClientProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -445,8 +445,8 @@ export type ClientProfileIncludeUpdateManyAndReturn<ExtArgs extends runtime.Type
 export type $ClientProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ClientProfile"
   objects: {
-    projects: Prisma.$ProjectPayload<ExtArgs>[]
     organization: Prisma.$OrganizationPayload<ExtArgs>
+    projects: Prisma.$ProjectPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -845,8 +845,8 @@ readonly fields: ClientProfileFieldRefs;
  */
 export interface Prisma__ClientProfileClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  projects<T extends Prisma.ClientProfile$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClientProfile$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   organization<T extends Prisma.OrganizationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrganizationDefaultArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  projects<T extends Prisma.ClientProfile$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClientProfile$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

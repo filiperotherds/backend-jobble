@@ -230,8 +230,8 @@ export type AddressWhereInput = {
   number?: Prisma.StringFilter<"Address"> | string
   userProfileId?: Prisma.StringNullableFilter<"Address"> | string | null
   organizationId?: Prisma.StringNullableFilter<"Address"> | string | null
-  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
+  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
 }
 
 export type AddressOrderByWithRelationInput = {
@@ -246,8 +246,8 @@ export type AddressOrderByWithRelationInput = {
   number?: Prisma.SortOrder
   userProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
   organizationId?: Prisma.SortOrderInput | Prisma.SortOrder
-  userProfile?: Prisma.UserProfileOrderByWithRelationInput
   organization?: Prisma.OrganizationOrderByWithRelationInput
+  userProfile?: Prisma.UserProfileOrderByWithRelationInput
 }
 
 export type AddressWhereUniqueInput = Prisma.AtLeast<{
@@ -265,8 +265,8 @@ export type AddressWhereUniqueInput = Prisma.AtLeast<{
   number?: Prisma.StringFilter<"Address"> | string
   userProfileId?: Prisma.StringNullableFilter<"Address"> | string | null
   organizationId?: Prisma.StringNullableFilter<"Address"> | string | null
-  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
+  userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
 }, "id">
 
 export type AddressOrderByWithAggregationInput = {
@@ -313,8 +313,8 @@ export type AddressCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   number: string
-  userProfile?: Prisma.UserProfileCreateNestedOneWithoutAddressesInput
   organization?: Prisma.OrganizationCreateNestedOneWithoutAddressInput
+  userProfile?: Prisma.UserProfileCreateNestedOneWithoutAddressesInput
 }
 
 export type AddressUncheckedCreateInput = {
@@ -341,8 +341,8 @@ export type AddressUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  userProfile?: Prisma.UserProfileUpdateOneWithoutAddressesNestedInput
   organization?: Prisma.OrganizationUpdateOneWithoutAddressNestedInput
+  userProfile?: Prisma.UserProfileUpdateOneWithoutAddressesNestedInput
 }
 
 export type AddressUncheckedUpdateInput = {
@@ -774,8 +774,8 @@ export type AddressSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   number?: boolean
   userProfileId?: boolean
   organizationId?: boolean
-  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
   organization?: boolean | Prisma.Address$organizationArgs<ExtArgs>
+  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
 }, ExtArgs["result"]["address"]>
 
 export type AddressSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -790,8 +790,8 @@ export type AddressSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   number?: boolean
   userProfileId?: boolean
   organizationId?: boolean
-  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
   organization?: boolean | Prisma.Address$organizationArgs<ExtArgs>
+  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
 }, ExtArgs["result"]["address"]>
 
 export type AddressSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -806,8 +806,8 @@ export type AddressSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   number?: boolean
   userProfileId?: boolean
   organizationId?: boolean
-  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
   organization?: boolean | Prisma.Address$organizationArgs<ExtArgs>
+  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
 }, ExtArgs["result"]["address"]>
 
 export type AddressSelectScalar = {
@@ -826,23 +826,23 @@ export type AddressSelectScalar = {
 
 export type AddressOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "street" | "city" | "state" | "zipCode" | "country" | "createdAt" | "updatedAt" | "number" | "userProfileId" | "organizationId", ExtArgs["result"]["address"]>
 export type AddressInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
   organization?: boolean | Prisma.Address$organizationArgs<ExtArgs>
+  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
 }
 export type AddressIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
   organization?: boolean | Prisma.Address$organizationArgs<ExtArgs>
+  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
 }
 export type AddressIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
   organization?: boolean | Prisma.Address$organizationArgs<ExtArgs>
+  userProfile?: boolean | Prisma.Address$userProfileArgs<ExtArgs>
 }
 
 export type $AddressPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Address"
   objects: {
-    userProfile: Prisma.$UserProfilePayload<ExtArgs> | null
     organization: Prisma.$OrganizationPayload<ExtArgs> | null
+    userProfile: Prisma.$UserProfilePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1250,8 +1250,8 @@ readonly fields: AddressFieldRefs;
  */
 export interface Prisma__AddressClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  userProfile<T extends Prisma.Address$userProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Address$userProfileArgs<ExtArgs>>): Prisma.Prisma__UserProfileClient<runtime.Types.Result.GetResult<Prisma.$UserProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   organization<T extends Prisma.Address$organizationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Address$organizationArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  userProfile<T extends Prisma.Address$userProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Address$userProfileArgs<ExtArgs>>): Prisma.Prisma__UserProfileClient<runtime.Types.Result.GetResult<Prisma.$UserProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1688,25 +1688,6 @@ export type AddressDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Address.userProfile
- */
-export type Address$userProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the UserProfile
-   */
-  select?: Prisma.UserProfileSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the UserProfile
-   */
-  omit?: Prisma.UserProfileOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserProfileInclude<ExtArgs> | null
-  where?: Prisma.UserProfileWhereInput
-}
-
-/**
  * Address.organization
  */
 export type Address$organizationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1723,6 +1704,25 @@ export type Address$organizationArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   include?: Prisma.OrganizationInclude<ExtArgs> | null
   where?: Prisma.OrganizationWhereInput
+}
+
+/**
+ * Address.userProfile
+ */
+export type Address$userProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserProfile
+   */
+  select?: Prisma.UserProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserProfile
+   */
+  omit?: Prisma.UserProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserProfileInclude<ExtArgs> | null
+  where?: Prisma.UserProfileWhereInput
 }
 
 /**
