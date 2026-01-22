@@ -49,7 +49,6 @@ model Invite {
   id             String       @id @default(uuid())
   email          String
   role           Role
-  type           OrgType
   createdAt      DateTime     @default(now()) @map("created_at")
   authorId       String?      @map("author_id")
   organizationId String
@@ -74,46 +73,27 @@ model Member {
 }
 
 model Organization {
-  id                        String           @id @default(uuid())
+  id                        String   @id @default(uuid())
   name                      String?
-  type                      OrgType
-  domain                    String?          @unique
-  shouldAttachUsersByDomain Boolean          @default(false) @map("should_attach_users_by_domain")
-  avatarUrl                 String?          @map("avatar_url")
-  createdAt                 DateTime         @default(now()) @map("created_at")
-  updatedAt                 DateTime         @updatedAt @map("updated_at")
-  ownerId                   String           @unique @map("owner_id")
-  cnpj                      String?          @unique
-  email                     String?          @unique
-  address                   Address[]
-  clientProfile             ClientProfile?
-  invites                   Invite[]
-  members                   Member[]
-  owner                     User             @relation(fields: [ownerId], references: [id])
-  providerProfile           ProviderProfile?
+  domain                    String?  @unique
+  shouldAttachUsersByDomain Boolean  @default(false) @map("should_attach_users_by_domain")
+  avatarUrl                 String?  @map("avatar_url")
+  createdAt                 DateTime @default(now()) @map("created_at")
+  updatedAt                 DateTime @updatedAt @map("updated_at")
+  cpfCnpj                   String?  @unique @map("cpf_cnpj")
+  email                     String?  @unique
 
-  @@index([cnpj])
+  ownerId String @unique @map("owner_id")
+  owner   User   @relation(fields: [ownerId], references: [id])
+
+  address   Address[]
+  invites   Invite[]
+  members   Member[]
+  estimates Estimate[]
+  customers Customer[]
+
+  @@index(id)
   @@map("organization")
-}
-
-model ProviderProfile {
-  id             String       @id @default(uuid())
-  organizationId String       @unique @map("organization_id")
-  estimates      Estimate[]
-  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  projects       Project[]
-  services       Service[]    @relation("ProviderProfileToService")
-
-  @@map("pro_profile")
-}
-
-model ClientProfile {
-  id             String       @id @default(uuid())
-  organizationId String       @unique @map("organization_id")
-  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  projects       Project[]
-
-  @@map("client_profile")
 }
 
 model Address {
@@ -135,52 +115,59 @@ model Address {
 }
 
 model Service {
-  id              String            @id @default(uuid())
-  name            String
-  description     String?
-  slug            String            @unique
-  createdAt       DateTime          @default(now()) @map("created_at")
-  updatedAt       DateTime          @updatedAt @map("updated_at")
-  project         Project[]
-  providerProfile ProviderProfile[] @relation("ProviderProfileToService")
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  slug        String    @unique
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  project     Project[]
 
   @@map("service")
 }
 
 model Project {
-  id                String           @id @default(uuid())
-  description       String?
-  photoUrls         String[]         @map("photo_urls")
-  createdAt         DateTime         @default(now()) @map("created_at")
-  updatedAt         DateTime         @updatedAt @map("updated_at")
-  status            ProjectStatus    @default(PENDING)
-  serviceId         String           @map("service_id")
-  providerProfileId String?          @map("pro_profile_id")
-  clientProfileId   String?          @map("client_profile_id")
-  userProfileId     String?          @map("user_profile_id")
-  estimate          Estimate[]
-  clientProfile     ClientProfile?   @relation(fields: [clientProfileId], references: [id])
-  providerProfile   ProviderProfile? @relation(fields: [providerProfileId], references: [id])
-  service           Service          @relation(fields: [serviceId], references: [id])
-  userProfile       UserProfile?     @relation(fields: [userProfileId], references: [id])
+  id            String        @id @default(uuid())
+  description   String?
+  photoUrls     String[]      @map("photo_urls")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+  status        ProjectStatus @default(PENDING)
+  serviceId     String        @map("service_id")
+  userProfileId String?       @map("user_profile_id")
+  service       Service       @relation(fields: [serviceId], references: [id])
+  userProfile   UserProfile?  @relation(fields: [userProfileId], references: [id])
 
   @@map("project")
 }
 
 model Estimate {
-  id                String           @id @default(uuid())
-  description       String?
-  duration          Int
-  value             Int
-  status            EstimateStatus   @default(PENDING)
-  createdAt         DateTime         @default(now()) @map("created_at")
-  validity          DateTime?
-  projectId         String           @map("project_id")
-  providerProfileId String?          @map("pro_profile_id")
-  providerProfile   ProviderProfile? @relation(fields: [providerProfileId], references: [id])
-  project           Project          @relation(fields: [projectId], references: [id])
+  id          String         @id @default(uuid())
+  description String?
+  duration    Int
+  value       Int
+  status      EstimateStatus @default(PENDING)
+  createdAt   DateTime       @default(now()) @map("created_at")
+  validity    DateTime?
+
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
 
   @@map("estimate")
+}
+
+model Customer {
+  id   String       @id @default(uuid())
+  type CustomerType
+  
+
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
+}
+
+enum CustomerType {
+  PF
+  PJ
 }
 
 enum TokenType {
@@ -203,11 +190,6 @@ enum EstimateStatus {
 enum Role {
   ADMIN
   MEMBER
-}
-
-enum OrgType {
-  PROVIDER
-  CLIENT
 }
 
 enum AccountType {
