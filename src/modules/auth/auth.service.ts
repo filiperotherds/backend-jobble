@@ -12,14 +12,12 @@ import { SignUpBodySchema } from './schemas/sign-up.schema'
 import { CurrentUser } from '@/common/decorators/current-user-decorator'
 import { TokenPayload } from './strategies/jwt.strategy'
 
-type JwtTyp = 'USER' | 'ORG_CLIENT' | 'ORG_PRO'
-
 @Injectable()
 export class AuthService {
   constructor(
     private prisma: PrismaService,
     private jwt: JwtService,
-  ) { }
+  ) {}
 
   async singin({ email, password }: SignInBodySchema) {
     const user = await this.prisma.user.findFirst({
@@ -27,15 +25,9 @@ export class AuthService {
         email,
       },
       include: {
-        userProfile: true,
         member: {
-          include: {
-            organization: {
-              include: {
-                providerProfile: true,
-                clientProfile: true,
-              },
-            },
+          select: {
+            organizationId: true,
           },
         },
       },
@@ -51,67 +43,9 @@ export class AuthService {
       throw new UnauthorizedException('User credentials do not match.')
     }
 
-    let typ: JwtTyp
-    let ctx: {
-      orgId: string | null
-      memberId: string | null
-      profileId: string | null
-      role?: string
-    }
-
-    if (user.accountType === 'INDIVIDUAL') {
-      if (!user.userProfile) {
-        throw new BadRequestException('Individual account without profile.')
-      }
-
-      typ = 'USER'
-      ctx = {
-        orgId: null,
-        memberId: null,
-        profileId: user.userProfile.id,
-      }
-    } else {
-      if (!user.member) {
-        throw new BadRequestException(
-          'Business user has no organization linked.',
-        )
-      }
-
-      const org = user.member.organization
-
-      if (org.type === 'PROVIDER') {
-        if (!org.providerProfile) {
-          throw new BadRequestException(
-            'Provider Organization missing profile.',
-          )
-        }
-
-        typ = 'ORG_PRO'
-        ctx = {
-          orgId: org.id,
-          memberId: user.member.id,
-          profileId: org.providerProfile.id,
-          role: user.member.role,
-        }
-      } else {
-        if (!org.clientProfile) {
-          throw new BadRequestException('Client Organization missing profile.')
-        }
-
-        typ = 'ORG_CLIENT'
-        ctx = {
-          orgId: org.id,
-          memberId: user.member.id,
-          profileId: org.clientProfile.id,
-          role: user.member.role,
-        }
-      }
-    }
-
     const payload = {
       sub: user.id,
-      typ,
-      ctx,
+      orgId: user.member?.organizationId,
       iss: 'workee.auth',
     }
 
@@ -122,7 +56,7 @@ export class AuthService {
     }
   }
 
-  async singup({ name, email, password, accountType }: SignUpBodySchema) {
+  async singup({ name, email, password }: SignUpBodySchema) {
     const userExists = await this.prisma.user.findFirst({
       where: {
         email,
@@ -141,7 +75,6 @@ export class AuthService {
           name,
           email,
           password: hashedPassword,
-          accountType,
         },
       })
 
@@ -153,66 +86,5 @@ export class AuthService {
     })
   }
 
-  async organizationSignUp({
-    name,
-    email,
-    password,
-    accountType,
-    orgType,
-  }: SignUpBodySchema) {
-    const userExists = await this.prisma.user.findFirst({
-      where: {
-        email,
-      },
-    })
-
-    if (userExists) {
-      throw new ConflictException('User already exists.')
-    }
-
-    if (!orgType) {
-      throw new BadRequestException('Organization type is required.')
-    }
-
-    const hashedPassword = await hash(password, 8)
-
-    await this.prisma.$transaction(async (tx) => {
-      const user = await tx.user.create({
-        data: {
-          name,
-          email,
-          password: hashedPassword,
-          accountType,
-        },
-      })
-
-      const organization = await tx.organization.create({
-        data: {
-          type: orgType,
-          ownerId: user.id,
-          members: {
-            create: {
-              userId: user.id,
-              role: 'ADMIN',
-            },
-          },
-        },
-      })
-
-      await tx.providerProfile.create({
-        data: { organizationId: organization.id },
-      })
-
-      // await tx.user.update({
-      //   where: { id: user.id },
-      //   data: {
-      //     organizationOwner: { connect: { id: organization.id } },
-      //   },
-      // })
-    })
-  }
-
-  async getUserMembership(@CurrentUser() { sub }: TokenPayload) {
-
-  }
+  async getUserMembership(@CurrentUser() { sub }: TokenPayload) {}
 }

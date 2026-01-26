@@ -5,6 +5,7 @@ import { envSchema } from './config/env'
 import { AuthModule } from './modules/auth/auth.module'
 import { UsersModule } from './modules/users/users.module'
 import { OrganizationsModule } from './modules/organizations/organizations.module'
+import { EstimatesModule } from './modules/estimates/estimates.module'
 
 @Module({
   imports: [
@@ -15,8 +16,9 @@ import { OrganizationsModule } from './modules/organizations/organizations.modul
     AuthModule,
     UsersModule,
     OrganizationsModule,
+    EstimatesModule,
   ],
   controllers: [],
   providers: [PrismaService],
 })
-export class AppModule { }
+export class AppModule {}

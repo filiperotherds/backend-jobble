@@ -48,16 +48,6 @@ export type Member = Prisma.MemberModel
  */
 export type Organization = Prisma.OrganizationModel
 /**
- * Model ProviderProfile
- * 
- */
-export type ProviderProfile = Prisma.ProviderProfileModel
-/**
- * Model ClientProfile
- * 
- */
-export type ClientProfile = Prisma.ClientProfileModel
-/**
  * Model Address
  * 
  */
@@ -77,3 +67,18 @@ export type Project = Prisma.ProjectModel
  * 
  */
 export type Estimate = Prisma.EstimateModel
+/**
+ * Model Customer
+ * 
+ */
+export type Customer = Prisma.CustomerModel
+/**
+ * Model EstimateItem
+ * 
+ */
+export type EstimateItem = Prisma.EstimateItemModel
+/**
+ * Model Product
+ * 
+ */
+export type Product = Prisma.ProductModel

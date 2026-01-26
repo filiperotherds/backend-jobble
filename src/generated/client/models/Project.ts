@@ -29,10 +29,7 @@ export type ProjectMinAggregateOutputType = {
   description: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  status: $Enums.ProjectStatus | null
   serviceId: string | null
-  providerProfileId: string | null
-  clientProfileId: string | null
   userProfileId: string | null
 }
 
@@ -41,10 +38,7 @@ export type ProjectMaxAggregateOutputType = {
   description: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  status: $Enums.ProjectStatus | null
   serviceId: string | null
-  providerProfileId: string | null
-  clientProfileId: string | null
   userProfileId: string | null
 }
 
@@ -54,10 +48,7 @@ export type ProjectCountAggregateOutputType = {
   photoUrls: number
   createdAt: number
   updatedAt: number
-  status: number
   serviceId: number
-  providerProfileId: number
-  clientProfileId: number
   userProfileId: number
   _all: number
 }
@@ -68,10 +59,7 @@ export type ProjectMinAggregateInputType = {
   description?: true
   createdAt?: true
   updatedAt?: true
-  status?: true
   serviceId?: true
-  providerProfileId?: true
-  clientProfileId?: true
   userProfileId?: true
 }
 
@@ -80,10 +68,7 @@ export type ProjectMaxAggregateInputType = {
   description?: true
   createdAt?: true
   updatedAt?: true
-  status?: true
   serviceId?: true
-  providerProfileId?: true
-  clientProfileId?: true
   userProfileId?: true
 }
 
@@ -93,10 +78,7 @@ export type ProjectCountAggregateInputType = {
   photoUrls?: true
   createdAt?: true
   updatedAt?: true
-  status?: true
   serviceId?: true
-  providerProfileId?: true
-  clientProfileId?: true
   userProfileId?: true
   _all?: true
 }
@@ -179,10 +161,7 @@ export type ProjectGroupByOutputType = {
   photoUrls: string[]
   createdAt: Date
   updatedAt: Date
-  status: $Enums.ProjectStatus
   serviceId: string
-  providerProfileId: string | null
-  clientProfileId: string | null
   userProfileId: string | null
   _count: ProjectCountAggregateOutputType | null
   _min: ProjectMinAggregateOutputType | null
@@ -213,14 +192,8 @@ export type ProjectWhereInput = {
   photoUrls?: Prisma.StringNullableListFilter<"Project">
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
-  status?: Prisma.EnumProjectStatusFilter<"Project"> | $Enums.ProjectStatus
   serviceId?: Prisma.StringFilter<"Project"> | string
-  providerProfileId?: Prisma.StringNullableFilter<"Project"> | string | null
-  clientProfileId?: Prisma.StringNullableFilter<"Project"> | string | null
   userProfileId?: Prisma.StringNullableFilter<"Project"> | string | null
-  estimate?: Prisma.EstimateListRelationFilter
-  clientProfile?: Prisma.XOR<Prisma.ClientProfileNullableScalarRelationFilter, Prisma.ClientProfileWhereInput> | null
-  providerProfile?: Prisma.XOR<Prisma.ProviderProfileNullableScalarRelationFilter, Prisma.ProviderProfileWhereInput> | null
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
   userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
 }
@@ -231,14 +204,8 @@ export type ProjectOrderByWithRelationInput = {
   photoUrls?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
-  providerProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
-  clientProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
   userProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
-  estimate?: Prisma.EstimateOrderByRelationAggregateInput
-  clientProfile?: Prisma.ClientProfileOrderByWithRelationInput
-  providerProfile?: Prisma.ProviderProfileOrderByWithRelationInput
   service?: Prisma.ServiceOrderByWithRelationInput
   userProfile?: Prisma.UserProfileOrderByWithRelationInput
 }
@@ -252,14 +219,8 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   photoUrls?: Prisma.StringNullableListFilter<"Project">
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
-  status?: Prisma.EnumProjectStatusFilter<"Project"> | $Enums.ProjectStatus
   serviceId?: Prisma.StringFilter<"Project"> | string
-  providerProfileId?: Prisma.StringNullableFilter<"Project"> | string | null
-  clientProfileId?: Prisma.StringNullableFilter<"Project"> | string | null
   userProfileId?: Prisma.StringNullableFilter<"Project"> | string | null
-  estimate?: Prisma.EstimateListRelationFilter
-  clientProfile?: Prisma.XOR<Prisma.ClientProfileNullableScalarRelationFilter, Prisma.ClientProfileWhereInput> | null
-  providerProfile?: Prisma.XOR<Prisma.ProviderProfileNullableScalarRelationFilter, Prisma.ProviderProfileWhereInput> | null
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
   userProfile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
 }, "id">
@@ -270,10 +231,7 @@ export type ProjectOrderByWithAggregationInput = {
   photoUrls?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
-  providerProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
-  clientProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
   userProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ProjectCountOrderByAggregateInput
   _max?: Prisma.ProjectMaxOrderByAggregateInput
@@ -289,10 +247,7 @@ export type ProjectScalarWhereWithAggregatesInput = {
   photoUrls?: Prisma.StringNullableListFilter<"Project">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
-  status?: Prisma.EnumProjectStatusWithAggregatesFilter<"Project"> | $Enums.ProjectStatus
   serviceId?: Prisma.StringWithAggregatesFilter<"Project"> | string
-  providerProfileId?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
-  clientProfileId?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   userProfileId?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
 }
 
@@ -302,10 +257,6 @@ export type ProjectCreateInput = {
   photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  estimate?: Prisma.EstimateCreateNestedManyWithoutProjectInput
-  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutProjectsInput
-  providerProfile?: Prisma.ProviderProfileCreateNestedOneWithoutProjectsInput
   service: Prisma.ServiceCreateNestedOneWithoutProjectInput
   userProfile?: Prisma.UserProfileCreateNestedOneWithoutProjectsInput
 }
@@ -316,12 +267,8 @@ export type ProjectUncheckedCreateInput = {
   photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
   serviceId: string
-  providerProfileId?: string | null
-  clientProfileId?: string | null
   userProfileId?: string | null
-  estimate?: Prisma.EstimateUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUpdateInput = {
@@ -330,10 +277,6 @@ export type ProjectUpdateInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  estimate?: Prisma.EstimateUpdateManyWithoutProjectNestedInput
-  clientProfile?: Prisma.ClientProfileUpdateOneWithoutProjectsNestedInput
-  providerProfile?: Prisma.ProviderProfileUpdateOneWithoutProjectsNestedInput
   service?: Prisma.ServiceUpdateOneRequiredWithoutProjectNestedInput
   userProfile?: Prisma.UserProfileUpdateOneWithoutProjectsNestedInput
 }
@@ -344,12 +287,8 @@ export type ProjectUncheckedUpdateInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estimate?: Prisma.EstimateUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateManyInput = {
@@ -358,10 +297,7 @@ export type ProjectCreateManyInput = {
   photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
   serviceId: string
-  providerProfileId?: string | null
-  clientProfileId?: string | null
   userProfileId?: string | null
 }
 
@@ -371,7 +307,6 @@ export type ProjectUpdateManyMutationInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
 }
 
 export type ProjectUncheckedUpdateManyInput = {
@@ -380,10 +315,7 @@ export type ProjectUncheckedUpdateManyInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -411,10 +343,7 @@ export type ProjectCountOrderByAggregateInput = {
   photoUrls?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
-  providerProfileId?: Prisma.SortOrder
-  clientProfileId?: Prisma.SortOrder
   userProfileId?: Prisma.SortOrder
 }
 
@@ -423,10 +352,7 @@ export type ProjectMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
-  providerProfileId?: Prisma.SortOrder
-  clientProfileId?: Prisma.SortOrder
   userProfileId?: Prisma.SortOrder
 }
 
@@ -435,16 +361,8 @@ export type ProjectMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
-  providerProfileId?: Prisma.SortOrder
-  clientProfileId?: Prisma.SortOrder
   userProfileId?: Prisma.SortOrder
-}
-
-export type ProjectScalarRelationFilter = {
-  is?: Prisma.ProjectWhereInput
-  isNot?: Prisma.ProjectWhereInput
 }
 
 export type ProjectCreateNestedManyWithoutUserProfileInput = {
@@ -486,90 +404,6 @@ export type ProjectUncheckedUpdateManyWithoutUserProfileNestedInput = {
   connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
   update?: Prisma.ProjectUpdateWithWhereUniqueWithoutUserProfileInput | Prisma.ProjectUpdateWithWhereUniqueWithoutUserProfileInput[]
   updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutUserProfileInput | Prisma.ProjectUpdateManyWithWhereWithoutUserProfileInput[]
-  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-}
-
-export type ProjectCreateNestedManyWithoutProviderProfileInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutProviderProfileInput, Prisma.ProjectUncheckedCreateWithoutProviderProfileInput> | Prisma.ProjectCreateWithoutProviderProfileInput[] | Prisma.ProjectUncheckedCreateWithoutProviderProfileInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutProviderProfileInput | Prisma.ProjectCreateOrConnectWithoutProviderProfileInput[]
-  createMany?: Prisma.ProjectCreateManyProviderProfileInputEnvelope
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-}
-
-export type ProjectUncheckedCreateNestedManyWithoutProviderProfileInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutProviderProfileInput, Prisma.ProjectUncheckedCreateWithoutProviderProfileInput> | Prisma.ProjectCreateWithoutProviderProfileInput[] | Prisma.ProjectUncheckedCreateWithoutProviderProfileInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutProviderProfileInput | Prisma.ProjectCreateOrConnectWithoutProviderProfileInput[]
-  createMany?: Prisma.ProjectCreateManyProviderProfileInputEnvelope
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-}
-
-export type ProjectUpdateManyWithoutProviderProfileNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutProviderProfileInput, Prisma.ProjectUncheckedCreateWithoutProviderProfileInput> | Prisma.ProjectCreateWithoutProviderProfileInput[] | Prisma.ProjectUncheckedCreateWithoutProviderProfileInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutProviderProfileInput | Prisma.ProjectCreateOrConnectWithoutProviderProfileInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutProviderProfileInput | Prisma.ProjectUpsertWithWhereUniqueWithoutProviderProfileInput[]
-  createMany?: Prisma.ProjectCreateManyProviderProfileInputEnvelope
-  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutProviderProfileInput | Prisma.ProjectUpdateWithWhereUniqueWithoutProviderProfileInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutProviderProfileInput | Prisma.ProjectUpdateManyWithWhereWithoutProviderProfileInput[]
-  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-}
-
-export type ProjectUncheckedUpdateManyWithoutProviderProfileNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutProviderProfileInput, Prisma.ProjectUncheckedCreateWithoutProviderProfileInput> | Prisma.ProjectCreateWithoutProviderProfileInput[] | Prisma.ProjectUncheckedCreateWithoutProviderProfileInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutProviderProfileInput | Prisma.ProjectCreateOrConnectWithoutProviderProfileInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutProviderProfileInput | Prisma.ProjectUpsertWithWhereUniqueWithoutProviderProfileInput[]
-  createMany?: Prisma.ProjectCreateManyProviderProfileInputEnvelope
-  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutProviderProfileInput | Prisma.ProjectUpdateWithWhereUniqueWithoutProviderProfileInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutProviderProfileInput | Prisma.ProjectUpdateManyWithWhereWithoutProviderProfileInput[]
-  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-}
-
-export type ProjectCreateNestedManyWithoutClientProfileInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutClientProfileInput, Prisma.ProjectUncheckedCreateWithoutClientProfileInput> | Prisma.ProjectCreateWithoutClientProfileInput[] | Prisma.ProjectUncheckedCreateWithoutClientProfileInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutClientProfileInput | Prisma.ProjectCreateOrConnectWithoutClientProfileInput[]
-  createMany?: Prisma.ProjectCreateManyClientProfileInputEnvelope
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-}
-
-export type ProjectUncheckedCreateNestedManyWithoutClientProfileInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutClientProfileInput, Prisma.ProjectUncheckedCreateWithoutClientProfileInput> | Prisma.ProjectCreateWithoutClientProfileInput[] | Prisma.ProjectUncheckedCreateWithoutClientProfileInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutClientProfileInput | Prisma.ProjectCreateOrConnectWithoutClientProfileInput[]
-  createMany?: Prisma.ProjectCreateManyClientProfileInputEnvelope
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-}
-
-export type ProjectUpdateManyWithoutClientProfileNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutClientProfileInput, Prisma.ProjectUncheckedCreateWithoutClientProfileInput> | Prisma.ProjectCreateWithoutClientProfileInput[] | Prisma.ProjectUncheckedCreateWithoutClientProfileInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutClientProfileInput | Prisma.ProjectCreateOrConnectWithoutClientProfileInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutClientProfileInput | Prisma.ProjectUpsertWithWhereUniqueWithoutClientProfileInput[]
-  createMany?: Prisma.ProjectCreateManyClientProfileInputEnvelope
-  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutClientProfileInput | Prisma.ProjectUpdateWithWhereUniqueWithoutClientProfileInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutClientProfileInput | Prisma.ProjectUpdateManyWithWhereWithoutClientProfileInput[]
-  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-}
-
-export type ProjectUncheckedUpdateManyWithoutClientProfileNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutClientProfileInput, Prisma.ProjectUncheckedCreateWithoutClientProfileInput> | Prisma.ProjectCreateWithoutClientProfileInput[] | Prisma.ProjectUncheckedCreateWithoutClientProfileInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutClientProfileInput | Prisma.ProjectCreateOrConnectWithoutClientProfileInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutClientProfileInput | Prisma.ProjectUpsertWithWhereUniqueWithoutClientProfileInput[]
-  createMany?: Prisma.ProjectCreateManyClientProfileInputEnvelope
-  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutClientProfileInput | Prisma.ProjectUpdateWithWhereUniqueWithoutClientProfileInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutClientProfileInput | Prisma.ProjectUpdateManyWithWhereWithoutClientProfileInput[]
   deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
 }
 
@@ -624,34 +458,12 @@ export type ProjectUpdatephotoUrlsInput = {
   push?: string | string[]
 }
 
-export type EnumProjectStatusFieldUpdateOperationsInput = {
-  set?: $Enums.ProjectStatus
-}
-
-export type ProjectCreateNestedOneWithoutEstimateInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutEstimateInput, Prisma.ProjectUncheckedCreateWithoutEstimateInput>
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutEstimateInput
-  connect?: Prisma.ProjectWhereUniqueInput
-}
-
-export type ProjectUpdateOneRequiredWithoutEstimateNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutEstimateInput, Prisma.ProjectUncheckedCreateWithoutEstimateInput>
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutEstimateInput
-  upsert?: Prisma.ProjectUpsertWithoutEstimateInput
-  connect?: Prisma.ProjectWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutEstimateInput, Prisma.ProjectUpdateWithoutEstimateInput>, Prisma.ProjectUncheckedUpdateWithoutEstimateInput>
-}
-
 export type ProjectCreateWithoutUserProfileInput = {
   id?: string
   description?: string | null
   photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  estimate?: Prisma.EstimateCreateNestedManyWithoutProjectInput
-  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutProjectsInput
-  providerProfile?: Prisma.ProviderProfileCreateNestedOneWithoutProjectsInput
   service: Prisma.ServiceCreateNestedOneWithoutProjectInput
 }
 
@@ -661,11 +473,7 @@ export type ProjectUncheckedCreateWithoutUserProfileInput = {
   photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
   serviceId: string
-  providerProfileId?: string | null
-  clientProfileId?: string | null
-  estimate?: Prisma.EstimateUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutUserProfileInput = {
@@ -703,115 +511,8 @@ export type ProjectScalarWhereInput = {
   photoUrls?: Prisma.StringNullableListFilter<"Project">
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
-  status?: Prisma.EnumProjectStatusFilter<"Project"> | $Enums.ProjectStatus
   serviceId?: Prisma.StringFilter<"Project"> | string
-  providerProfileId?: Prisma.StringNullableFilter<"Project"> | string | null
-  clientProfileId?: Prisma.StringNullableFilter<"Project"> | string | null
   userProfileId?: Prisma.StringNullableFilter<"Project"> | string | null
-}
-
-export type ProjectCreateWithoutProviderProfileInput = {
-  id?: string
-  description?: string | null
-  photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  estimate?: Prisma.EstimateCreateNestedManyWithoutProjectInput
-  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutProjectsInput
-  service: Prisma.ServiceCreateNestedOneWithoutProjectInput
-  userProfile?: Prisma.UserProfileCreateNestedOneWithoutProjectsInput
-}
-
-export type ProjectUncheckedCreateWithoutProviderProfileInput = {
-  id?: string
-  description?: string | null
-  photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  serviceId: string
-  clientProfileId?: string | null
-  userProfileId?: string | null
-  estimate?: Prisma.EstimateUncheckedCreateNestedManyWithoutProjectInput
-}
-
-export type ProjectCreateOrConnectWithoutProviderProfileInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutProviderProfileInput, Prisma.ProjectUncheckedCreateWithoutProviderProfileInput>
-}
-
-export type ProjectCreateManyProviderProfileInputEnvelope = {
-  data: Prisma.ProjectCreateManyProviderProfileInput | Prisma.ProjectCreateManyProviderProfileInput[]
-  skipDuplicates?: boolean
-}
-
-export type ProjectUpsertWithWhereUniqueWithoutProviderProfileInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  update: Prisma.XOR<Prisma.ProjectUpdateWithoutProviderProfileInput, Prisma.ProjectUncheckedUpdateWithoutProviderProfileInput>
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutProviderProfileInput, Prisma.ProjectUncheckedCreateWithoutProviderProfileInput>
-}
-
-export type ProjectUpdateWithWhereUniqueWithoutProviderProfileInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  data: Prisma.XOR<Prisma.ProjectUpdateWithoutProviderProfileInput, Prisma.ProjectUncheckedUpdateWithoutProviderProfileInput>
-}
-
-export type ProjectUpdateManyWithWhereWithoutProviderProfileInput = {
-  where: Prisma.ProjectScalarWhereInput
-  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutProviderProfileInput>
-}
-
-export type ProjectCreateWithoutClientProfileInput = {
-  id?: string
-  description?: string | null
-  photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  estimate?: Prisma.EstimateCreateNestedManyWithoutProjectInput
-  providerProfile?: Prisma.ProviderProfileCreateNestedOneWithoutProjectsInput
-  service: Prisma.ServiceCreateNestedOneWithoutProjectInput
-  userProfile?: Prisma.UserProfileCreateNestedOneWithoutProjectsInput
-}
-
-export type ProjectUncheckedCreateWithoutClientProfileInput = {
-  id?: string
-  description?: string | null
-  photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  serviceId: string
-  providerProfileId?: string | null
-  userProfileId?: string | null
-  estimate?: Prisma.EstimateUncheckedCreateNestedManyWithoutProjectInput
-}
-
-export type ProjectCreateOrConnectWithoutClientProfileInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutClientProfileInput, Prisma.ProjectUncheckedCreateWithoutClientProfileInput>
-}
-
-export type ProjectCreateManyClientProfileInputEnvelope = {
-  data: Prisma.ProjectCreateManyClientProfileInput | Prisma.ProjectCreateManyClientProfileInput[]
-  skipDuplicates?: boolean
-}
-
-export type ProjectUpsertWithWhereUniqueWithoutClientProfileInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  update: Prisma.XOR<Prisma.ProjectUpdateWithoutClientProfileInput, Prisma.ProjectUncheckedUpdateWithoutClientProfileInput>
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutClientProfileInput, Prisma.ProjectUncheckedCreateWithoutClientProfileInput>
-}
-
-export type ProjectUpdateWithWhereUniqueWithoutClientProfileInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  data: Prisma.XOR<Prisma.ProjectUpdateWithoutClientProfileInput, Prisma.ProjectUncheckedUpdateWithoutClientProfileInput>
-}
-
-export type ProjectUpdateManyWithWhereWithoutClientProfileInput = {
-  where: Prisma.ProjectScalarWhereInput
-  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutClientProfileInput>
 }
 
 export type ProjectCreateWithoutServiceInput = {
@@ -820,10 +521,6 @@ export type ProjectCreateWithoutServiceInput = {
   photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  estimate?: Prisma.EstimateCreateNestedManyWithoutProjectInput
-  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutProjectsInput
-  providerProfile?: Prisma.ProviderProfileCreateNestedOneWithoutProjectsInput
   userProfile?: Prisma.UserProfileCreateNestedOneWithoutProjectsInput
 }
 
@@ -833,11 +530,7 @@ export type ProjectUncheckedCreateWithoutServiceInput = {
   photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  providerProfileId?: string | null
-  clientProfileId?: string | null
   userProfileId?: string | null
-  estimate?: Prisma.EstimateUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutServiceInput = {
@@ -866,84 +559,13 @@ export type ProjectUpdateManyWithWhereWithoutServiceInput = {
   data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutServiceInput>
 }
 
-export type ProjectCreateWithoutEstimateInput = {
-  id?: string
-  description?: string | null
-  photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutProjectsInput
-  providerProfile?: Prisma.ProviderProfileCreateNestedOneWithoutProjectsInput
-  service: Prisma.ServiceCreateNestedOneWithoutProjectInput
-  userProfile?: Prisma.UserProfileCreateNestedOneWithoutProjectsInput
-}
-
-export type ProjectUncheckedCreateWithoutEstimateInput = {
-  id?: string
-  description?: string | null
-  photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  serviceId: string
-  providerProfileId?: string | null
-  clientProfileId?: string | null
-  userProfileId?: string | null
-}
-
-export type ProjectCreateOrConnectWithoutEstimateInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutEstimateInput, Prisma.ProjectUncheckedCreateWithoutEstimateInput>
-}
-
-export type ProjectUpsertWithoutEstimateInput = {
-  update: Prisma.XOR<Prisma.ProjectUpdateWithoutEstimateInput, Prisma.ProjectUncheckedUpdateWithoutEstimateInput>
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutEstimateInput, Prisma.ProjectUncheckedCreateWithoutEstimateInput>
-  where?: Prisma.ProjectWhereInput
-}
-
-export type ProjectUpdateToOneWithWhereWithoutEstimateInput = {
-  where?: Prisma.ProjectWhereInput
-  data: Prisma.XOR<Prisma.ProjectUpdateWithoutEstimateInput, Prisma.ProjectUncheckedUpdateWithoutEstimateInput>
-}
-
-export type ProjectUpdateWithoutEstimateInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  clientProfile?: Prisma.ClientProfileUpdateOneWithoutProjectsNestedInput
-  providerProfile?: Prisma.ProviderProfileUpdateOneWithoutProjectsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutProjectNestedInput
-  userProfile?: Prisma.UserProfileUpdateOneWithoutProjectsNestedInput
-}
-
-export type ProjectUncheckedUpdateWithoutEstimateInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  userProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
 export type ProjectCreateManyUserProfileInput = {
   id?: string
   description?: string | null
   photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
   serviceId: string
-  providerProfileId?: string | null
-  clientProfileId?: string | null
 }
 
 export type ProjectUpdateWithoutUserProfileInput = {
@@ -952,10 +574,6 @@ export type ProjectUpdateWithoutUserProfileInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  estimate?: Prisma.EstimateUpdateManyWithoutProjectNestedInput
-  clientProfile?: Prisma.ClientProfileUpdateOneWithoutProjectsNestedInput
-  providerProfile?: Prisma.ProviderProfileUpdateOneWithoutProjectsNestedInput
   service?: Prisma.ServiceUpdateOneRequiredWithoutProjectNestedInput
 }
 
@@ -965,11 +583,7 @@ export type ProjectUncheckedUpdateWithoutUserProfileInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estimate?: Prisma.EstimateUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateManyWithoutUserProfileInput = {
@@ -978,110 +592,7 @@ export type ProjectUncheckedUpdateManyWithoutUserProfileInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
-export type ProjectCreateManyProviderProfileInput = {
-  id?: string
-  description?: string | null
-  photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  serviceId: string
-  clientProfileId?: string | null
-  userProfileId?: string | null
-}
-
-export type ProjectUpdateWithoutProviderProfileInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  estimate?: Prisma.EstimateUpdateManyWithoutProjectNestedInput
-  clientProfile?: Prisma.ClientProfileUpdateOneWithoutProjectsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutProjectNestedInput
-  userProfile?: Prisma.UserProfileUpdateOneWithoutProjectsNestedInput
-}
-
-export type ProjectUncheckedUpdateWithoutProviderProfileInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
-  clientProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  userProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estimate?: Prisma.EstimateUncheckedUpdateManyWithoutProjectNestedInput
-}
-
-export type ProjectUncheckedUpdateManyWithoutProviderProfileInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
-  clientProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  userProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
-export type ProjectCreateManyClientProfileInput = {
-  id?: string
-  description?: string | null
-  photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  serviceId: string
-  providerProfileId?: string | null
-  userProfileId?: string | null
-}
-
-export type ProjectUpdateWithoutClientProfileInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  estimate?: Prisma.EstimateUpdateManyWithoutProjectNestedInput
-  providerProfile?: Prisma.ProviderProfileUpdateOneWithoutProjectsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutProjectNestedInput
-  userProfile?: Prisma.UserProfileUpdateOneWithoutProjectsNestedInput
-}
-
-export type ProjectUncheckedUpdateWithoutClientProfileInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  userProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estimate?: Prisma.EstimateUncheckedUpdateManyWithoutProjectNestedInput
-}
-
-export type ProjectUncheckedUpdateManyWithoutClientProfileInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  userProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ProjectCreateManyServiceInput = {
@@ -1090,9 +601,6 @@ export type ProjectCreateManyServiceInput = {
   photoUrls?: Prisma.ProjectCreatephotoUrlsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  status?: $Enums.ProjectStatus
-  providerProfileId?: string | null
-  clientProfileId?: string | null
   userProfileId?: string | null
 }
 
@@ -1102,10 +610,6 @@ export type ProjectUpdateWithoutServiceInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  estimate?: Prisma.EstimateUpdateManyWithoutProjectNestedInput
-  clientProfile?: Prisma.ClientProfileUpdateOneWithoutProjectsNestedInput
-  providerProfile?: Prisma.ProviderProfileUpdateOneWithoutProjectsNestedInput
   userProfile?: Prisma.UserProfileUpdateOneWithoutProjectsNestedInput
 }
 
@@ -1115,11 +619,7 @@ export type ProjectUncheckedUpdateWithoutServiceInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  providerProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estimate?: Prisma.EstimateUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateManyWithoutServiceInput = {
@@ -1128,41 +628,9 @@ export type ProjectUncheckedUpdateManyWithoutServiceInput = {
   photoUrls?: Prisma.ProjectUpdatephotoUrlsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  providerProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-
-/**
- * Count Type ProjectCountOutputType
- */
-
-export type ProjectCountOutputType = {
-  estimate: number
-}
-
-export type ProjectCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  estimate?: boolean | ProjectCountOutputTypeCountEstimateArgs
-}
-
-/**
- * ProjectCountOutputType without action
- */
-export type ProjectCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ProjectCountOutputType
-   */
-  select?: Prisma.ProjectCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * ProjectCountOutputType without action
- */
-export type ProjectCountOutputTypeCountEstimateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EstimateWhereInput
-}
 
 
 export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1171,17 +639,10 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   photoUrls?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  status?: boolean
   serviceId?: boolean
-  providerProfileId?: boolean
-  clientProfileId?: boolean
   userProfileId?: boolean
-  estimate?: boolean | Prisma.Project$estimateArgs<ExtArgs>
-  clientProfile?: boolean | Prisma.Project$clientProfileArgs<ExtArgs>
-  providerProfile?: boolean | Prisma.Project$providerProfileArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
   userProfile?: boolean | Prisma.Project$userProfileArgs<ExtArgs>
-  _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1190,13 +651,8 @@ export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   photoUrls?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  status?: boolean
   serviceId?: boolean
-  providerProfileId?: boolean
-  clientProfileId?: boolean
   userProfileId?: boolean
-  clientProfile?: boolean | Prisma.Project$clientProfileArgs<ExtArgs>
-  providerProfile?: boolean | Prisma.Project$providerProfileArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
   userProfile?: boolean | Prisma.Project$userProfileArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
@@ -1207,13 +663,8 @@ export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   photoUrls?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  status?: boolean
   serviceId?: boolean
-  providerProfileId?: boolean
-  clientProfileId?: boolean
   userProfileId?: boolean
-  clientProfile?: boolean | Prisma.Project$clientProfileArgs<ExtArgs>
-  providerProfile?: boolean | Prisma.Project$providerProfileArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
   userProfile?: boolean | Prisma.Project$userProfileArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
@@ -1224,31 +675,20 @@ export type ProjectSelectScalar = {
   photoUrls?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  status?: boolean
   serviceId?: boolean
-  providerProfileId?: boolean
-  clientProfileId?: boolean
   userProfileId?: boolean
 }
 
-export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "description" | "photoUrls" | "createdAt" | "updatedAt" | "status" | "serviceId" | "providerProfileId" | "clientProfileId" | "userProfileId", ExtArgs["result"]["project"]>
+export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "description" | "photoUrls" | "createdAt" | "updatedAt" | "serviceId" | "userProfileId", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  estimate?: boolean | Prisma.Project$estimateArgs<ExtArgs>
-  clientProfile?: boolean | Prisma.Project$clientProfileArgs<ExtArgs>
-  providerProfile?: boolean | Prisma.Project$providerProfileArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
   userProfile?: boolean | Prisma.Project$userProfileArgs<ExtArgs>
-  _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  clientProfile?: boolean | Prisma.Project$clientProfileArgs<ExtArgs>
-  providerProfile?: boolean | Prisma.Project$providerProfileArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
   userProfile?: boolean | Prisma.Project$userProfileArgs<ExtArgs>
 }
 export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  clientProfile?: boolean | Prisma.Project$clientProfileArgs<ExtArgs>
-  providerProfile?: boolean | Prisma.Project$providerProfileArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
   userProfile?: boolean | Prisma.Project$userProfileArgs<ExtArgs>
 }
@@ -1256,9 +696,6 @@ export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Project"
   objects: {
-    estimate: Prisma.$EstimatePayload<ExtArgs>[]
-    clientProfile: Prisma.$ClientProfilePayload<ExtArgs> | null
-    providerProfile: Prisma.$ProviderProfilePayload<ExtArgs> | null
     service: Prisma.$ServicePayload<ExtArgs>
     userProfile: Prisma.$UserProfilePayload<ExtArgs> | null
   }
@@ -1268,10 +705,7 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     photoUrls: string[]
     createdAt: Date
     updatedAt: Date
-    status: $Enums.ProjectStatus
     serviceId: string
-    providerProfileId: string | null
-    clientProfileId: string | null
     userProfileId: string | null
   }, ExtArgs["result"]["project"]>
   composites: {}
@@ -1667,9 +1101,6 @@ readonly fields: ProjectFieldRefs;
  */
 export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  estimate<T extends Prisma.Project$estimateArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$estimateArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EstimatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  clientProfile<T extends Prisma.Project$clientProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$clientProfileArgs<ExtArgs>>): Prisma.Prisma__ClientProfileClient<runtime.Types.Result.GetResult<Prisma.$ClientProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  providerProfile<T extends Prisma.Project$providerProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$providerProfileArgs<ExtArgs>>): Prisma.Prisma__ProviderProfileClient<runtime.Types.Result.GetResult<Prisma.$ProviderProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   service<T extends Prisma.ServiceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceClient<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   userProfile<T extends Prisma.Project$userProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$userProfileArgs<ExtArgs>>): Prisma.Prisma__UserProfileClient<runtime.Types.Result.GetResult<Prisma.$UserProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
@@ -1706,10 +1137,7 @@ export interface ProjectFieldRefs {
   readonly photoUrls: Prisma.FieldRef<"Project", 'String[]'>
   readonly createdAt: Prisma.FieldRef<"Project", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Project", 'DateTime'>
-  readonly status: Prisma.FieldRef<"Project", 'ProjectStatus'>
   readonly serviceId: Prisma.FieldRef<"Project", 'String'>
-  readonly providerProfileId: Prisma.FieldRef<"Project", 'String'>
-  readonly clientProfileId: Prisma.FieldRef<"Project", 'String'>
   readonly userProfileId: Prisma.FieldRef<"Project", 'String'>
 }
     
@@ -2104,68 +1532,6 @@ export type ProjectDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Projects to delete.
    */
   limit?: number
-}
-
-/**
- * Project.estimate
- */
-export type Project$estimateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Estimate
-   */
-  select?: Prisma.EstimateSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Estimate
-   */
-  omit?: Prisma.EstimateOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.EstimateInclude<ExtArgs> | null
-  where?: Prisma.EstimateWhereInput
-  orderBy?: Prisma.EstimateOrderByWithRelationInput | Prisma.EstimateOrderByWithRelationInput[]
-  cursor?: Prisma.EstimateWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.EstimateScalarFieldEnum | Prisma.EstimateScalarFieldEnum[]
-}
-
-/**
- * Project.clientProfile
- */
-export type Project$clientProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ClientProfile
-   */
-  select?: Prisma.ClientProfileSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ClientProfile
-   */
-  omit?: Prisma.ClientProfileOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ClientProfileInclude<ExtArgs> | null
-  where?: Prisma.ClientProfileWhereInput
-}
-
-/**
- * Project.providerProfile
- */
-export type Project$providerProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ProviderProfile
-   */
-  select?: Prisma.ProviderProfileSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ProviderProfile
-   */
-  omit?: Prisma.ProviderProfileOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ProviderProfileInclude<ExtArgs> | null
-  where?: Prisma.ProviderProfileWhereInput
 }
 
 /**

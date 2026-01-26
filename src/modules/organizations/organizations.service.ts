@@ -1,22 +1,48 @@
 import { PrismaService } from '@/database/prisma/prisma.service'
-import { Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable } from '@nestjs/common'
 
 @Injectable()
 export class OrganizationsService {
   constructor(private prisma: PrismaService) {}
 
-  async getOrganizationById(id: string) {
+  async getOrganizationByUserId(id: string) {
+    const result = await this.prisma.user.findUnique({
+      where: {
+        id,
+      },
+      select: {
+        member: {
+          select: {
+            organizationId: true,
+            role: true,
+          },
+        },
+      },
+    })
+
+    if (!result?.member) {
+      throw new BadRequestException('Member Not Found.')
+    }
+
+    const { organizationId, role } = result.member
+
     const organization = await this.prisma.organization.findUnique({
       select: {
         name: true,
         avatarUrl: true,
-        type: true,
-        cnpj: true,
+        cpfCnpj: true,
         email: true,
       },
-      where: { id },
+      where: {
+        id: organizationId,
+      },
     })
 
-    return organization
+    const ctx = {
+      organization,
+      role,
+    }
+
+    return ctx
   }
 }

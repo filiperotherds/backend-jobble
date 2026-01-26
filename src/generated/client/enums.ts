@@ -9,21 +9,31 @@
 * 🟢 You can import this file directly.
 */
 
+export const PaymentMethod = {
+  CREDIT_CARD: 'CREDIT_CARD',
+  DEBIT_CARD: 'DEBIT_CARD',
+  BOLETO: 'BOLETO',
+  CASH: 'CASH',
+  PIX: 'PIX',
+  TRANSFER: 'TRANSFER'
+} as const
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const CustomerType = {
+  PF: 'PF',
+  PJ: 'PJ'
+} as const
+
+export type CustomerType = (typeof CustomerType)[keyof typeof CustomerType]
+
+
 export const TokenType = {
   PASSWORD_RECOVER: 'PASSWORD_RECOVER'
 } as const
 
 export type TokenType = (typeof TokenType)[keyof typeof TokenType]
-
-
-export const ProjectStatus = {
-  PENDING: 'PENDING',
-  IN_PROGRESS: 'IN_PROGRESS',
-  COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED'
-} as const
-
-export type ProjectStatus = (typeof ProjectStatus)[keyof typeof ProjectStatus]
 
 
 export const EstimateStatus = {
@@ -41,19 +51,3 @@ export const Role = {
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
-
-
-export const OrgType = {
-  PROVIDER: 'PROVIDER',
-  CLIENT: 'CLIENT'
-} as const
-
-export type OrgType = (typeof OrgType)[keyof typeof OrgType]
-
-
-export const AccountType = {
-  INDIVIDUAL: 'INDIVIDUAL',
-  ORGANIZATION: 'ORGANIZATION'
-} as const
-
-export type AccountType = (typeof AccountType)[keyof typeof AccountType]

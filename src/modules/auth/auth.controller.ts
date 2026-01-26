@@ -27,10 +27,4 @@ export class AuthController {
   async signup(@Body() body: SignUpBodySchema) {
     await this.authService.singup(body)
   }
-
-  @Post('/organization/signup')
-  @UsePipes(new ZodValidationPipe(signUpBodySchema))
-  async organizationSignup(@Body() body: SignUpBodySchema) {
-    await this.authService.organizationSignUp(body)
-  }
 }

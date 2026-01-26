@@ -1,21 +1,47 @@
 import { PrismaService } from '@/database/prisma/prisma.service'
-import { Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable } from '@nestjs/common'
 
 @Injectable()
 export class EstimatesService {
   constructor(private prisma: PrismaService) {}
 
-  async getOrganizationEstimates(profileId: string) {
-    const estiamtes = await this.prisma.estimate.findMany({
-      select: {
-        id: true,
-        createdAt: true,
-        description: true,
-        value: true,
+  async getOrganizationEstimates(sub: string) {
+    const result = await this.prisma.user.findUnique({
+      where: {
+        id: sub,
       },
-      where: { providerProfileId: profileId },
+      select: {
+        member: {
+          select: {
+            organizationId: true,
+          },
+        },
+      },
     })
 
-    return estiamtes
+    if (!result?.member) {
+      throw new BadRequestException('Organization Not Found.')
+    }
+
+    const { organizationId } = result.member
+
+    const estimates = await this.prisma.estimate.findMany({
+      where: {
+        organizationId,
+      },
+      include: {
+        customer: {
+          select: {
+            name: true,
+            address: true,
+            email: true,
+            phone: true,
+          },
+        },
+        items: true,
+      },
+    })
+
+    return estimates
   }
 }

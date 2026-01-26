@@ -4,26 +4,20 @@ import { CurrentUser } from '@/common/decorators/current-user-decorator'
 import { TokenPayload } from '@/modules/auth/strategies/jwt.strategy'
 import { EstimatesService } from '../estimates.service'
 
-@Controller('/estimates/:organizationId')
+@Controller('/estimates')
 @UseGuards(JwtAuthGuard)
-export class GetOrganizationController {
+export class GetEstimatesController {
   constructor(private estimatesService: EstimatesService) {}
 
   @Get()
-  async getOrganizationEstimates(@CurrentUser() { ctx }: TokenPayload) {
-    if (!ctx.orgId) {
+  async getOrganizationEstimates(@CurrentUser() { sub }: TokenPayload) {
+    if (!sub) {
       throw new BadRequestException('Missing params')
     }
 
-    const profileId = ctx.profileId
+    const estimates =
+      await this.estimatesService.getOrganizationEstimates(sub)
 
-    if (!profileId) {
-      throw new BadRequestException('Missing profileId')
-    }
-
-    const estiamtes =
-      await this.estimatesService.getOrganizationEstimates(profileId)
-
-    return estiamtes
+    return estimates
   }
 }
