@@ -259,6 +259,7 @@ export const SiteScalarFieldEnum = {
   city: 'city',
   latitude: 'latitude',
   longitude: 'longitude',
+  active: 'active',
   organizationId: 'organizationId'
 } as const
 

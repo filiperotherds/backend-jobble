@@ -46,6 +46,7 @@ export type SiteMinAggregateOutputType = {
   city: string | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
+  active: boolean | null
   organizationId: string | null
 }
 
@@ -59,6 +60,7 @@ export type SiteMaxAggregateOutputType = {
   city: string | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
+  active: boolean | null
   organizationId: string | null
 }
 
@@ -72,6 +74,7 @@ export type SiteCountAggregateOutputType = {
   city: number
   latitude: number
   longitude: number
+  active: number
   organizationId: number
   _all: number
 }
@@ -97,6 +100,7 @@ export type SiteMinAggregateInputType = {
   city?: true
   latitude?: true
   longitude?: true
+  active?: true
   organizationId?: true
 }
 
@@ -110,6 +114,7 @@ export type SiteMaxAggregateInputType = {
   city?: true
   latitude?: true
   longitude?: true
+  active?: true
   organizationId?: true
 }
 
@@ -123,6 +128,7 @@ export type SiteCountAggregateInputType = {
   city?: true
   latitude?: true
   longitude?: true
+  active?: true
   organizationId?: true
   _all?: true
 }
@@ -223,6 +229,7 @@ export type SiteGroupByOutputType = {
   city: string
   latitude: runtime.Decimal
   longitude: runtime.Decimal
+  active: boolean | null
   organizationId: string | null
   _count: SiteCountAggregateOutputType | null
   _avg: SiteAvgAggregateOutputType | null
@@ -259,6 +266,7 @@ export type SiteWhereInput = {
   city?: Prisma.StringFilter<"Site"> | string
   latitude?: Prisma.DecimalFilter<"Site"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFilter<"Site"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.BoolNullableFilter<"Site"> | boolean | null
   organizationId?: Prisma.StringNullableFilter<"Site"> | string | null
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
 }
@@ -273,6 +281,7 @@ export type SiteOrderByWithRelationInput = {
   city?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  active?: Prisma.SortOrderInput | Prisma.SortOrder
   organizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   organization?: Prisma.OrganizationOrderByWithRelationInput
 }
@@ -290,6 +299,7 @@ export type SiteWhereUniqueInput = Prisma.AtLeast<{
   city?: Prisma.StringFilter<"Site"> | string
   latitude?: Prisma.DecimalFilter<"Site"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFilter<"Site"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.BoolNullableFilter<"Site"> | boolean | null
   organizationId?: Prisma.StringNullableFilter<"Site"> | string | null
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
 }, "id" | "slug">
@@ -304,6 +314,7 @@ export type SiteOrderByWithAggregationInput = {
   city?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  active?: Prisma.SortOrderInput | Prisma.SortOrder
   organizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.SiteCountOrderByAggregateInput
   _avg?: Prisma.SiteAvgOrderByAggregateInput
@@ -325,6 +336,7 @@ export type SiteScalarWhereWithAggregatesInput = {
   city?: Prisma.StringWithAggregatesFilter<"Site"> | string
   latitude?: Prisma.DecimalWithAggregatesFilter<"Site"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalWithAggregatesFilter<"Site"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.BoolNullableWithAggregatesFilter<"Site"> | boolean | null
   organizationId?: Prisma.StringNullableWithAggregatesFilter<"Site"> | string | null
 }
 
@@ -338,6 +350,7 @@ export type SiteCreateInput = {
   city: string
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: boolean | null
   organization?: Prisma.OrganizationCreateNestedOneWithoutSitesInput
 }
 
@@ -351,6 +364,7 @@ export type SiteUncheckedCreateInput = {
   city: string
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: boolean | null
   organizationId?: string | null
 }
 
@@ -364,6 +378,7 @@ export type SiteUpdateInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   organization?: Prisma.OrganizationUpdateOneWithoutSitesNestedInput
 }
 
@@ -377,6 +392,7 @@ export type SiteUncheckedUpdateInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -390,6 +406,7 @@ export type SiteCreateManyInput = {
   city: string
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: boolean | null
   organizationId?: string | null
 }
 
@@ -403,6 +420,7 @@ export type SiteUpdateManyMutationInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type SiteUncheckedUpdateManyInput = {
@@ -415,6 +433,7 @@ export type SiteUncheckedUpdateManyInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -438,6 +457,7 @@ export type SiteCountOrderByAggregateInput = {
   city?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
 }
 
@@ -456,6 +476,7 @@ export type SiteMaxOrderByAggregateInput = {
   city?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
 }
 
@@ -469,6 +490,7 @@ export type SiteMinOrderByAggregateInput = {
   city?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
 }
 
@@ -519,6 +541,10 @@ export type SiteUncheckedUpdateManyWithoutOrganizationNestedInput = {
   deleteMany?: Prisma.SiteScalarWhereInput | Prisma.SiteScalarWhereInput[]
 }
 
+export type NullableBoolFieldUpdateOperationsInput = {
+  set?: boolean | null
+}
+
 export type SiteCreateWithoutOrganizationInput = {
   id?: string
   name: string
@@ -529,6 +555,7 @@ export type SiteCreateWithoutOrganizationInput = {
   city: string
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: boolean | null
 }
 
 export type SiteUncheckedCreateWithoutOrganizationInput = {
@@ -541,6 +568,7 @@ export type SiteUncheckedCreateWithoutOrganizationInput = {
   city: string
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: boolean | null
 }
 
 export type SiteCreateOrConnectWithoutOrganizationInput = {
@@ -582,6 +610,7 @@ export type SiteScalarWhereInput = {
   city?: Prisma.StringFilter<"Site"> | string
   latitude?: Prisma.DecimalFilter<"Site"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFilter<"Site"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.BoolNullableFilter<"Site"> | boolean | null
   organizationId?: Prisma.StringNullableFilter<"Site"> | string | null
 }
 
@@ -595,6 +624,7 @@ export type SiteCreateManyOrganizationInput = {
   city: string
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: boolean | null
 }
 
 export type SiteUpdateWithoutOrganizationInput = {
@@ -607,6 +637,7 @@ export type SiteUpdateWithoutOrganizationInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type SiteUncheckedUpdateWithoutOrganizationInput = {
@@ -619,6 +650,7 @@ export type SiteUncheckedUpdateWithoutOrganizationInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type SiteUncheckedUpdateManyWithoutOrganizationInput = {
@@ -631,6 +663,7 @@ export type SiteUncheckedUpdateManyWithoutOrganizationInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 
@@ -645,6 +678,7 @@ export type SiteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   city?: boolean
   latitude?: boolean
   longitude?: boolean
+  active?: boolean
   organizationId?: boolean
   organization?: boolean | Prisma.Site$organizationArgs<ExtArgs>
 }, ExtArgs["result"]["site"]>
@@ -659,6 +693,7 @@ export type SiteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   city?: boolean
   latitude?: boolean
   longitude?: boolean
+  active?: boolean
   organizationId?: boolean
   organization?: boolean | Prisma.Site$organizationArgs<ExtArgs>
 }, ExtArgs["result"]["site"]>
@@ -673,6 +708,7 @@ export type SiteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   city?: boolean
   latitude?: boolean
   longitude?: boolean
+  active?: boolean
   organizationId?: boolean
   organization?: boolean | Prisma.Site$organizationArgs<ExtArgs>
 }, ExtArgs["result"]["site"]>
@@ -687,10 +723,11 @@ export type SiteSelectScalar = {
   city?: boolean
   latitude?: boolean
   longitude?: boolean
+  active?: boolean
   organizationId?: boolean
 }
 
-export type SiteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "avatarUrl" | "phone" | "email" | "city" | "latitude" | "longitude" | "organizationId", ExtArgs["result"]["site"]>
+export type SiteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "avatarUrl" | "phone" | "email" | "city" | "latitude" | "longitude" | "active" | "organizationId", ExtArgs["result"]["site"]>
 export type SiteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.Site$organizationArgs<ExtArgs>
 }
@@ -716,6 +753,7 @@ export type $SitePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     city: string
     latitude: runtime.Decimal
     longitude: runtime.Decimal
+    active: boolean | null
     organizationId: string | null
   }, ExtArgs["result"]["site"]>
   composites: {}
@@ -1150,6 +1188,7 @@ export interface SiteFieldRefs {
   readonly city: Prisma.FieldRef<"Site", 'String'>
   readonly latitude: Prisma.FieldRef<"Site", 'Decimal'>
   readonly longitude: Prisma.FieldRef<"Site", 'Decimal'>
+  readonly active: Prisma.FieldRef<"Site", 'Boolean'>
   readonly organizationId: Prisma.FieldRef<"Site", 'String'>
 }
     
