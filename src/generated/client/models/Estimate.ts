@@ -44,12 +44,12 @@ export type EstimateMinAggregateOutputType = {
   description: string | null
   status: $Enums.EstimateStatus | null
   createdAt: Date | null
-  validity: Date | null
-  deliveryDeadline: string | null
-  warrantyTerms: string | null
+  deliveryDeadline: Date | null
   paymentMethod: $Enums.PaymentMethod | null
   installments: number | null
   downPayment: runtime.Decimal | null
+  validity: Date | null
+  warrantyTerms: string | null
   organizationId: string | null
   customerId: string | null
 }
@@ -60,12 +60,12 @@ export type EstimateMaxAggregateOutputType = {
   description: string | null
   status: $Enums.EstimateStatus | null
   createdAt: Date | null
-  validity: Date | null
-  deliveryDeadline: string | null
-  warrantyTerms: string | null
+  deliveryDeadline: Date | null
   paymentMethod: $Enums.PaymentMethod | null
   installments: number | null
   downPayment: runtime.Decimal | null
+  validity: Date | null
+  warrantyTerms: string | null
   organizationId: string | null
   customerId: string | null
 }
@@ -76,12 +76,12 @@ export type EstimateCountAggregateOutputType = {
   description: number
   status: number
   createdAt: number
-  validity: number
   deliveryDeadline: number
-  warrantyTerms: number
   paymentMethod: number
   installments: number
   downPayment: number
+  validity: number
+  warrantyTerms: number
   organizationId: number
   customerId: number
   _all: number
@@ -106,12 +106,12 @@ export type EstimateMinAggregateInputType = {
   description?: true
   status?: true
   createdAt?: true
-  validity?: true
   deliveryDeadline?: true
-  warrantyTerms?: true
   paymentMethod?: true
   installments?: true
   downPayment?: true
+  validity?: true
+  warrantyTerms?: true
   organizationId?: true
   customerId?: true
 }
@@ -122,12 +122,12 @@ export type EstimateMaxAggregateInputType = {
   description?: true
   status?: true
   createdAt?: true
-  validity?: true
   deliveryDeadline?: true
-  warrantyTerms?: true
   paymentMethod?: true
   installments?: true
   downPayment?: true
+  validity?: true
+  warrantyTerms?: true
   organizationId?: true
   customerId?: true
 }
@@ -138,12 +138,12 @@ export type EstimateCountAggregateInputType = {
   description?: true
   status?: true
   createdAt?: true
-  validity?: true
   deliveryDeadline?: true
-  warrantyTerms?: true
   paymentMethod?: true
   installments?: true
   downPayment?: true
+  validity?: true
+  warrantyTerms?: true
   organizationId?: true
   customerId?: true
   _all?: true
@@ -241,12 +241,12 @@ export type EstimateGroupByOutputType = {
   description: string | null
   status: $Enums.EstimateStatus
   createdAt: Date
-  validity: Date | null
-  deliveryDeadline: string | null
-  warrantyTerms: string | null
+  deliveryDeadline: Date | null
   paymentMethod: $Enums.PaymentMethod
   installments: number
   downPayment: runtime.Decimal | null
+  validity: Date | null
+  warrantyTerms: string | null
   organizationId: string | null
   customerId: string | null
   _count: EstimateCountAggregateOutputType | null
@@ -280,12 +280,12 @@ export type EstimateWhereInput = {
   description?: Prisma.StringNullableFilter<"Estimate"> | string | null
   status?: Prisma.EnumEstimateStatusFilter<"Estimate"> | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFilter<"Estimate"> | Date | string
-  validity?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
-  deliveryDeadline?: Prisma.StringNullableFilter<"Estimate"> | string | null
-  warrantyTerms?: Prisma.StringNullableFilter<"Estimate"> | string | null
+  deliveryDeadline?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Estimate"> | $Enums.PaymentMethod
   installments?: Prisma.IntFilter<"Estimate"> | number
   downPayment?: Prisma.DecimalNullableFilter<"Estimate"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
+  warrantyTerms?: Prisma.StringNullableFilter<"Estimate"> | string | null
   organizationId?: Prisma.StringNullableFilter<"Estimate"> | string | null
   customerId?: Prisma.StringNullableFilter<"Estimate"> | string | null
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
@@ -299,12 +299,12 @@ export type EstimateOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  validity?: Prisma.SortOrderInput | Prisma.SortOrder
   deliveryDeadline?: Prisma.SortOrderInput | Prisma.SortOrder
-  warrantyTerms?: Prisma.SortOrderInput | Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   installments?: Prisma.SortOrder
   downPayment?: Prisma.SortOrderInput | Prisma.SortOrder
+  validity?: Prisma.SortOrderInput | Prisma.SortOrder
+  warrantyTerms?: Prisma.SortOrderInput | Prisma.SortOrder
   organizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   customerId?: Prisma.SortOrderInput | Prisma.SortOrder
   organization?: Prisma.OrganizationOrderByWithRelationInput
@@ -322,12 +322,12 @@ export type EstimateWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Estimate"> | string | null
   status?: Prisma.EnumEstimateStatusFilter<"Estimate"> | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFilter<"Estimate"> | Date | string
-  validity?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
-  deliveryDeadline?: Prisma.StringNullableFilter<"Estimate"> | string | null
-  warrantyTerms?: Prisma.StringNullableFilter<"Estimate"> | string | null
+  deliveryDeadline?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Estimate"> | $Enums.PaymentMethod
   installments?: Prisma.IntFilter<"Estimate"> | number
   downPayment?: Prisma.DecimalNullableFilter<"Estimate"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
+  warrantyTerms?: Prisma.StringNullableFilter<"Estimate"> | string | null
   organizationId?: Prisma.StringNullableFilter<"Estimate"> | string | null
   customerId?: Prisma.StringNullableFilter<"Estimate"> | string | null
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
@@ -341,12 +341,12 @@ export type EstimateOrderByWithAggregationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  validity?: Prisma.SortOrderInput | Prisma.SortOrder
   deliveryDeadline?: Prisma.SortOrderInput | Prisma.SortOrder
-  warrantyTerms?: Prisma.SortOrderInput | Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   installments?: Prisma.SortOrder
   downPayment?: Prisma.SortOrderInput | Prisma.SortOrder
+  validity?: Prisma.SortOrderInput | Prisma.SortOrder
+  warrantyTerms?: Prisma.SortOrderInput | Prisma.SortOrder
   organizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   customerId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.EstimateCountOrderByAggregateInput
@@ -365,12 +365,12 @@ export type EstimateScalarWhereWithAggregatesInput = {
   description?: Prisma.StringNullableWithAggregatesFilter<"Estimate"> | string | null
   status?: Prisma.EnumEstimateStatusWithAggregatesFilter<"Estimate"> | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Estimate"> | Date | string
-  validity?: Prisma.DateTimeNullableWithAggregatesFilter<"Estimate"> | Date | string | null
-  deliveryDeadline?: Prisma.StringNullableWithAggregatesFilter<"Estimate"> | string | null
-  warrantyTerms?: Prisma.StringNullableWithAggregatesFilter<"Estimate"> | string | null
+  deliveryDeadline?: Prisma.DateTimeNullableWithAggregatesFilter<"Estimate"> | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodWithAggregatesFilter<"Estimate"> | $Enums.PaymentMethod
   installments?: Prisma.IntWithAggregatesFilter<"Estimate"> | number
   downPayment?: Prisma.DecimalNullableWithAggregatesFilter<"Estimate"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.DateTimeNullableWithAggregatesFilter<"Estimate"> | Date | string | null
+  warrantyTerms?: Prisma.StringNullableWithAggregatesFilter<"Estimate"> | string | null
   organizationId?: Prisma.StringNullableWithAggregatesFilter<"Estimate"> | string | null
   customerId?: Prisma.StringNullableWithAggregatesFilter<"Estimate"> | string | null
 }
@@ -381,12 +381,12 @@ export type EstimateCreateInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   organization?: Prisma.OrganizationCreateNestedOneWithoutEstimatesInput
   customer?: Prisma.CustomerCreateNestedOneWithoutEstimatesInput
   items?: Prisma.EstimateItemCreateNestedManyWithoutEstimateInput
@@ -398,12 +398,12 @@ export type EstimateUncheckedCreateInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   organizationId?: string | null
   customerId?: string | null
   items?: Prisma.EstimateItemUncheckedCreateNestedManyWithoutEstimateInput
@@ -415,12 +415,12 @@ export type EstimateUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   organization?: Prisma.OrganizationUpdateOneWithoutEstimatesNestedInput
   customer?: Prisma.CustomerUpdateOneWithoutEstimatesNestedInput
   items?: Prisma.EstimateItemUpdateManyWithoutEstimateNestedInput
@@ -432,12 +432,12 @@ export type EstimateUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   items?: Prisma.EstimateItemUncheckedUpdateManyWithoutEstimateNestedInput
@@ -449,12 +449,12 @@ export type EstimateCreateManyInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   organizationId?: string | null
   customerId?: string | null
 }
@@ -465,12 +465,12 @@ export type EstimateUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type EstimateUncheckedUpdateManyInput = {
@@ -479,12 +479,12 @@ export type EstimateUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -510,12 +510,12 @@ export type EstimateCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  validity?: Prisma.SortOrder
   deliveryDeadline?: Prisma.SortOrder
-  warrantyTerms?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   installments?: Prisma.SortOrder
   downPayment?: Prisma.SortOrder
+  validity?: Prisma.SortOrder
+  warrantyTerms?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
 }
@@ -532,12 +532,12 @@ export type EstimateMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  validity?: Prisma.SortOrder
   deliveryDeadline?: Prisma.SortOrder
-  warrantyTerms?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   installments?: Prisma.SortOrder
   downPayment?: Prisma.SortOrder
+  validity?: Prisma.SortOrder
+  warrantyTerms?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
 }
@@ -548,12 +548,12 @@ export type EstimateMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  validity?: Prisma.SortOrder
   deliveryDeadline?: Prisma.SortOrder
-  warrantyTerms?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   installments?: Prisma.SortOrder
   downPayment?: Prisma.SortOrder
+  validity?: Prisma.SortOrder
+  warrantyTerms?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
 }
@@ -701,12 +701,12 @@ export type EstimateCreateWithoutOrganizationInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   customer?: Prisma.CustomerCreateNestedOneWithoutEstimatesInput
   items?: Prisma.EstimateItemCreateNestedManyWithoutEstimateInput
 }
@@ -717,12 +717,12 @@ export type EstimateUncheckedCreateWithoutOrganizationInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   customerId?: string | null
   items?: Prisma.EstimateItemUncheckedCreateNestedManyWithoutEstimateInput
 }
@@ -762,12 +762,12 @@ export type EstimateScalarWhereInput = {
   description?: Prisma.StringNullableFilter<"Estimate"> | string | null
   status?: Prisma.EnumEstimateStatusFilter<"Estimate"> | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFilter<"Estimate"> | Date | string
-  validity?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
-  deliveryDeadline?: Prisma.StringNullableFilter<"Estimate"> | string | null
-  warrantyTerms?: Prisma.StringNullableFilter<"Estimate"> | string | null
+  deliveryDeadline?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Estimate"> | $Enums.PaymentMethod
   installments?: Prisma.IntFilter<"Estimate"> | number
   downPayment?: Prisma.DecimalNullableFilter<"Estimate"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.DateTimeNullableFilter<"Estimate"> | Date | string | null
+  warrantyTerms?: Prisma.StringNullableFilter<"Estimate"> | string | null
   organizationId?: Prisma.StringNullableFilter<"Estimate"> | string | null
   customerId?: Prisma.StringNullableFilter<"Estimate"> | string | null
 }
@@ -778,12 +778,12 @@ export type EstimateCreateWithoutCustomerInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   organization?: Prisma.OrganizationCreateNestedOneWithoutEstimatesInput
   items?: Prisma.EstimateItemCreateNestedManyWithoutEstimateInput
 }
@@ -794,12 +794,12 @@ export type EstimateUncheckedCreateWithoutCustomerInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   organizationId?: string | null
   items?: Prisma.EstimateItemUncheckedCreateNestedManyWithoutEstimateInput
 }
@@ -836,12 +836,12 @@ export type EstimateCreateWithoutItemsInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   organization?: Prisma.OrganizationCreateNestedOneWithoutEstimatesInput
   customer?: Prisma.CustomerCreateNestedOneWithoutEstimatesInput
 }
@@ -852,12 +852,12 @@ export type EstimateUncheckedCreateWithoutItemsInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   organizationId?: string | null
   customerId?: string | null
 }
@@ -884,12 +884,12 @@ export type EstimateUpdateWithoutItemsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   organization?: Prisma.OrganizationUpdateOneWithoutEstimatesNestedInput
   customer?: Prisma.CustomerUpdateOneWithoutEstimatesNestedInput
 }
@@ -900,12 +900,12 @@ export type EstimateUncheckedUpdateWithoutItemsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -916,12 +916,12 @@ export type EstimateCreateManyOrganizationInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   customerId?: string | null
 }
 
@@ -931,12 +931,12 @@ export type EstimateUpdateWithoutOrganizationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customer?: Prisma.CustomerUpdateOneWithoutEstimatesNestedInput
   items?: Prisma.EstimateItemUpdateManyWithoutEstimateNestedInput
 }
@@ -947,12 +947,12 @@ export type EstimateUncheckedUpdateWithoutOrganizationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   items?: Prisma.EstimateItemUncheckedUpdateManyWithoutEstimateNestedInput
 }
@@ -963,12 +963,12 @@ export type EstimateUncheckedUpdateManyWithoutOrganizationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -978,12 +978,12 @@ export type EstimateCreateManyCustomerInput = {
   description?: string | null
   status?: $Enums.EstimateStatus
   createdAt?: Date | string
-  validity?: Date | string | null
-  deliveryDeadline?: string | null
-  warrantyTerms?: string | null
+  deliveryDeadline?: Date | string | null
   paymentMethod?: $Enums.PaymentMethod
   installments?: number
   downPayment?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Date | string | null
+  warrantyTerms?: string | null
   organizationId?: string | null
 }
 
@@ -993,12 +993,12 @@ export type EstimateUpdateWithoutCustomerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   organization?: Prisma.OrganizationUpdateOneWithoutEstimatesNestedInput
   items?: Prisma.EstimateItemUpdateManyWithoutEstimateNestedInput
 }
@@ -1009,12 +1009,12 @@ export type EstimateUncheckedUpdateWithoutCustomerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   items?: Prisma.EstimateItemUncheckedUpdateManyWithoutEstimateNestedInput
 }
@@ -1025,12 +1025,12 @@ export type EstimateUncheckedUpdateManyWithoutCustomerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumEstimateStatusFieldUpdateOperationsInput | $Enums.EstimateStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  deliveryDeadline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deliveryDeadline?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   installments?: Prisma.IntFieldUpdateOperationsInput | number
   downPayment?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  validity?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  warrantyTerms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -1071,12 +1071,12 @@ export type EstimateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   description?: boolean
   status?: boolean
   createdAt?: boolean
-  validity?: boolean
   deliveryDeadline?: boolean
-  warrantyTerms?: boolean
   paymentMethod?: boolean
   installments?: boolean
   downPayment?: boolean
+  validity?: boolean
+  warrantyTerms?: boolean
   organizationId?: boolean
   customerId?: boolean
   organization?: boolean | Prisma.Estimate$organizationArgs<ExtArgs>
@@ -1091,12 +1091,12 @@ export type EstimateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   description?: boolean
   status?: boolean
   createdAt?: boolean
-  validity?: boolean
   deliveryDeadline?: boolean
-  warrantyTerms?: boolean
   paymentMethod?: boolean
   installments?: boolean
   downPayment?: boolean
+  validity?: boolean
+  warrantyTerms?: boolean
   organizationId?: boolean
   customerId?: boolean
   organization?: boolean | Prisma.Estimate$organizationArgs<ExtArgs>
@@ -1109,12 +1109,12 @@ export type EstimateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   description?: boolean
   status?: boolean
   createdAt?: boolean
-  validity?: boolean
   deliveryDeadline?: boolean
-  warrantyTerms?: boolean
   paymentMethod?: boolean
   installments?: boolean
   downPayment?: boolean
+  validity?: boolean
+  warrantyTerms?: boolean
   organizationId?: boolean
   customerId?: boolean
   organization?: boolean | Prisma.Estimate$organizationArgs<ExtArgs>
@@ -1127,17 +1127,17 @@ export type EstimateSelectScalar = {
   description?: boolean
   status?: boolean
   createdAt?: boolean
-  validity?: boolean
   deliveryDeadline?: boolean
-  warrantyTerms?: boolean
   paymentMethod?: boolean
   installments?: boolean
   downPayment?: boolean
+  validity?: boolean
+  warrantyTerms?: boolean
   organizationId?: boolean
   customerId?: boolean
 }
 
-export type EstimateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "estimateNo" | "description" | "status" | "createdAt" | "validity" | "deliveryDeadline" | "warrantyTerms" | "paymentMethod" | "installments" | "downPayment" | "organizationId" | "customerId", ExtArgs["result"]["estimate"]>
+export type EstimateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "estimateNo" | "description" | "status" | "createdAt" | "deliveryDeadline" | "paymentMethod" | "installments" | "downPayment" | "validity" | "warrantyTerms" | "organizationId" | "customerId", ExtArgs["result"]["estimate"]>
 export type EstimateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.Estimate$organizationArgs<ExtArgs>
   customer?: boolean | Prisma.Estimate$customerArgs<ExtArgs>
@@ -1166,12 +1166,12 @@ export type $EstimatePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     description: string | null
     status: $Enums.EstimateStatus
     createdAt: Date
-    validity: Date | null
-    deliveryDeadline: string | null
-    warrantyTerms: string | null
+    deliveryDeadline: Date | null
     paymentMethod: $Enums.PaymentMethod
     installments: number
     downPayment: runtime.Decimal | null
+    validity: Date | null
+    warrantyTerms: string | null
     organizationId: string | null
     customerId: string | null
   }, ExtArgs["result"]["estimate"]>
@@ -1605,12 +1605,12 @@ export interface EstimateFieldRefs {
   readonly description: Prisma.FieldRef<"Estimate", 'String'>
   readonly status: Prisma.FieldRef<"Estimate", 'EstimateStatus'>
   readonly createdAt: Prisma.FieldRef<"Estimate", 'DateTime'>
-  readonly validity: Prisma.FieldRef<"Estimate", 'DateTime'>
-  readonly deliveryDeadline: Prisma.FieldRef<"Estimate", 'String'>
-  readonly warrantyTerms: Prisma.FieldRef<"Estimate", 'String'>
+  readonly deliveryDeadline: Prisma.FieldRef<"Estimate", 'DateTime'>
   readonly paymentMethod: Prisma.FieldRef<"Estimate", 'PaymentMethod'>
   readonly installments: Prisma.FieldRef<"Estimate", 'Int'>
   readonly downPayment: Prisma.FieldRef<"Estimate", 'Decimal'>
+  readonly validity: Prisma.FieldRef<"Estimate", 'DateTime'>
+  readonly warrantyTerms: Prisma.FieldRef<"Estimate", 'String'>
   readonly organizationId: Prisma.FieldRef<"Estimate", 'String'>
   readonly customerId: Prisma.FieldRef<"Estimate", 'String'>
 }

@@ -91,6 +91,7 @@ model Organization {
   estimates Estimate[]
   customers Customer[]
   products  Product[]
+  sites     Site[]
 
   @@index(id)
   @@map("organization")
@@ -210,6 +211,23 @@ model Product {
   estimateItems EstimateItem[]
 
   @@map("product")
+}
+
+model Site {
+  id        String  @id @default(uuid())
+  name      String
+  slug      String  @unique
+  avatarUrl String? @map("avatar_url")
+  phone     String?
+  email     String?
+  city      String
+  latitude  Decimal @db.Decimal(10, 8)
+  longitude Decimal @db.Decimal(11, 8)
+
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
+
+  @@index([slug])
 }
 
 enum PaymentMethod {

@@ -63,7 +63,8 @@ export const ModelName = {
   Estimate: 'Estimate',
   Customer: 'Customer',
   EstimateItem: 'EstimateItem',
-  Product: 'Product'
+  Product: 'Product',
+  Site: 'Site'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -199,12 +200,12 @@ export const EstimateScalarFieldEnum = {
   description: 'description',
   status: 'status',
   createdAt: 'createdAt',
-  validity: 'validity',
   deliveryDeadline: 'deliveryDeadline',
-  warrantyTerms: 'warrantyTerms',
   paymentMethod: 'paymentMethod',
   installments: 'installments',
   downPayment: 'downPayment',
+  validity: 'validity',
+  warrantyTerms: 'warrantyTerms',
   organizationId: 'organizationId',
   customerId: 'customerId'
 } as const
@@ -246,6 +247,22 @@ export const ProductScalarFieldEnum = {
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+
+
+export const SiteScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  avatarUrl: 'avatarUrl',
+  phone: 'phone',
+  email: 'email',
+  city: 'city',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  organizationId: 'organizationId'
+} as const
+
+export type SiteScalarFieldEnum = (typeof SiteScalarFieldEnum)[keyof typeof SiteScalarFieldEnum]
 
 
 export const SortOrder = {

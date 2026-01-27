@@ -82,3 +82,8 @@ export type EstimateItem = Prisma.EstimateItemModel
  * 
  */
 export type Product = Prisma.ProductModel
+/**
+ * Model Site
+ * 
+ */
+export type Site = Prisma.SiteModel
