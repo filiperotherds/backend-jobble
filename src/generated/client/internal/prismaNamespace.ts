@@ -1553,8 +1553,6 @@ export const CustomerScalarFieldEnum = {
   address: 'address',
   phone: 'phone',
   email: 'email',
-  cpfCnpj: 'cpfCnpj',
-  type: 'type',
   organizationId: 'organizationId'
 } as const
 
@@ -1563,7 +1561,7 @@ export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typ
 
 export const EstimateItemScalarFieldEnum = {
   id: 'id',
-  description: 'description',
+  name: 'name',
   quantity: 'quantity',
   unitValue: 'unitValue',
   estimateId: 'estimateId',
@@ -1731,20 +1729,6 @@ export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
  * Reference to a field of type 'Decimal[]'
  */
 export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
-    
-
-
-/**
- * Reference to a field of type 'CustomerType'
- */
-export type EnumCustomerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CustomerType'>
-    
-
-
-/**
- * Reference to a field of type 'CustomerType[]'
- */
-export type ListEnumCustomerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CustomerType[]'>
     
 
 

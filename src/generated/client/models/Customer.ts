@@ -30,8 +30,6 @@ export type CustomerMinAggregateOutputType = {
   address: string | null
   phone: string | null
   email: string | null
-  cpfCnpj: string | null
-  type: $Enums.CustomerType | null
   organizationId: string | null
 }
 
@@ -41,8 +39,6 @@ export type CustomerMaxAggregateOutputType = {
   address: string | null
   phone: string | null
   email: string | null
-  cpfCnpj: string | null
-  type: $Enums.CustomerType | null
   organizationId: string | null
 }
 
@@ -52,8 +48,6 @@ export type CustomerCountAggregateOutputType = {
   address: number
   phone: number
   email: number
-  cpfCnpj: number
-  type: number
   organizationId: number
   _all: number
 }
@@ -65,8 +59,6 @@ export type CustomerMinAggregateInputType = {
   address?: true
   phone?: true
   email?: true
-  cpfCnpj?: true
-  type?: true
   organizationId?: true
 }
 
@@ -76,8 +68,6 @@ export type CustomerMaxAggregateInputType = {
   address?: true
   phone?: true
   email?: true
-  cpfCnpj?: true
-  type?: true
   organizationId?: true
 }
 
@@ -87,8 +77,6 @@ export type CustomerCountAggregateInputType = {
   address?: true
   phone?: true
   email?: true
-  cpfCnpj?: true
-  type?: true
   organizationId?: true
   _all?: true
 }
@@ -171,8 +159,6 @@ export type CustomerGroupByOutputType = {
   address: string | null
   phone: string | null
   email: string | null
-  cpfCnpj: string | null
-  type: $Enums.CustomerType
   organizationId: string | null
   _count: CustomerCountAggregateOutputType | null
   _min: CustomerMinAggregateOutputType | null
@@ -203,8 +189,6 @@ export type CustomerWhereInput = {
   address?: Prisma.StringNullableFilter<"Customer"> | string | null
   phone?: Prisma.StringNullableFilter<"Customer"> | string | null
   email?: Prisma.StringNullableFilter<"Customer"> | string | null
-  cpfCnpj?: Prisma.StringNullableFilter<"Customer"> | string | null
-  type?: Prisma.EnumCustomerTypeFilter<"Customer"> | $Enums.CustomerType
   organizationId?: Prisma.StringNullableFilter<"Customer"> | string | null
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
   estimates?: Prisma.EstimateListRelationFilter
@@ -216,8 +200,6 @@ export type CustomerOrderByWithRelationInput = {
   address?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
-  cpfCnpj?: Prisma.SortOrderInput | Prisma.SortOrder
-  type?: Prisma.SortOrder
   organizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   organization?: Prisma.OrganizationOrderByWithRelationInput
   estimates?: Prisma.EstimateOrderByRelationAggregateInput
@@ -232,8 +214,6 @@ export type CustomerWhereUniqueInput = Prisma.AtLeast<{
   address?: Prisma.StringNullableFilter<"Customer"> | string | null
   phone?: Prisma.StringNullableFilter<"Customer"> | string | null
   email?: Prisma.StringNullableFilter<"Customer"> | string | null
-  cpfCnpj?: Prisma.StringNullableFilter<"Customer"> | string | null
-  type?: Prisma.EnumCustomerTypeFilter<"Customer"> | $Enums.CustomerType
   organizationId?: Prisma.StringNullableFilter<"Customer"> | string | null
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
   estimates?: Prisma.EstimateListRelationFilter
@@ -245,8 +225,6 @@ export type CustomerOrderByWithAggregationInput = {
   address?: Prisma.SortOrderInput | Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
-  cpfCnpj?: Prisma.SortOrderInput | Prisma.SortOrder
-  type?: Prisma.SortOrder
   organizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CustomerCountOrderByAggregateInput
   _max?: Prisma.CustomerMaxOrderByAggregateInput
@@ -262,8 +240,6 @@ export type CustomerScalarWhereWithAggregatesInput = {
   address?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
   phone?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
   email?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
-  cpfCnpj?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
-  type?: Prisma.EnumCustomerTypeWithAggregatesFilter<"Customer"> | $Enums.CustomerType
   organizationId?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
 }
 
@@ -273,8 +249,6 @@ export type CustomerCreateInput = {
   address?: string | null
   phone?: string | null
   email?: string | null
-  cpfCnpj?: string | null
-  type: $Enums.CustomerType
   organization?: Prisma.OrganizationCreateNestedOneWithoutCustomersInput
   estimates?: Prisma.EstimateCreateNestedManyWithoutCustomerInput
 }
@@ -285,8 +259,6 @@ export type CustomerUncheckedCreateInput = {
   address?: string | null
   phone?: string | null
   email?: string | null
-  cpfCnpj?: string | null
-  type: $Enums.CustomerType
   organizationId?: string | null
   estimates?: Prisma.EstimateUncheckedCreateNestedManyWithoutCustomerInput
 }
@@ -297,8 +269,6 @@ export type CustomerUpdateInput = {
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cpfCnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
   organization?: Prisma.OrganizationUpdateOneWithoutCustomersNestedInput
   estimates?: Prisma.EstimateUpdateManyWithoutCustomerNestedInput
 }
@@ -309,8 +279,6 @@ export type CustomerUncheckedUpdateInput = {
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cpfCnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estimates?: Prisma.EstimateUncheckedUpdateManyWithoutCustomerNestedInput
 }
@@ -321,8 +289,6 @@ export type CustomerCreateManyInput = {
   address?: string | null
   phone?: string | null
   email?: string | null
-  cpfCnpj?: string | null
-  type: $Enums.CustomerType
   organizationId?: string | null
 }
 
@@ -332,8 +298,6 @@ export type CustomerUpdateManyMutationInput = {
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cpfCnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
 }
 
 export type CustomerUncheckedUpdateManyInput = {
@@ -342,8 +306,6 @@ export type CustomerUncheckedUpdateManyInput = {
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cpfCnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -368,8 +330,6 @@ export type CustomerCountOrderByAggregateInput = {
   address?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  cpfCnpj?: Prisma.SortOrder
-  type?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
 }
 
@@ -379,8 +339,6 @@ export type CustomerMaxOrderByAggregateInput = {
   address?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  cpfCnpj?: Prisma.SortOrder
-  type?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
 }
 
@@ -390,8 +348,6 @@ export type CustomerMinOrderByAggregateInput = {
   address?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  cpfCnpj?: Prisma.SortOrder
-  type?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
 }
 
@@ -453,18 +409,12 @@ export type CustomerUpdateOneWithoutEstimatesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CustomerUpdateToOneWithWhereWithoutEstimatesInput, Prisma.CustomerUpdateWithoutEstimatesInput>, Prisma.CustomerUncheckedUpdateWithoutEstimatesInput>
 }
 
-export type EnumCustomerTypeFieldUpdateOperationsInput = {
-  set?: $Enums.CustomerType
-}
-
 export type CustomerCreateWithoutOrganizationInput = {
   id?: string
   name?: string | null
   address?: string | null
   phone?: string | null
   email?: string | null
-  cpfCnpj?: string | null
-  type: $Enums.CustomerType
   estimates?: Prisma.EstimateCreateNestedManyWithoutCustomerInput
 }
 
@@ -474,8 +424,6 @@ export type CustomerUncheckedCreateWithoutOrganizationInput = {
   address?: string | null
   phone?: string | null
   email?: string | null
-  cpfCnpj?: string | null
-  type: $Enums.CustomerType
   estimates?: Prisma.EstimateUncheckedCreateNestedManyWithoutCustomerInput
 }
 
@@ -514,8 +462,6 @@ export type CustomerScalarWhereInput = {
   address?: Prisma.StringNullableFilter<"Customer"> | string | null
   phone?: Prisma.StringNullableFilter<"Customer"> | string | null
   email?: Prisma.StringNullableFilter<"Customer"> | string | null
-  cpfCnpj?: Prisma.StringNullableFilter<"Customer"> | string | null
-  type?: Prisma.EnumCustomerTypeFilter<"Customer"> | $Enums.CustomerType
   organizationId?: Prisma.StringNullableFilter<"Customer"> | string | null
 }
 
@@ -525,8 +471,6 @@ export type CustomerCreateWithoutEstimatesInput = {
   address?: string | null
   phone?: string | null
   email?: string | null
-  cpfCnpj?: string | null
-  type: $Enums.CustomerType
   organization?: Prisma.OrganizationCreateNestedOneWithoutCustomersInput
 }
 
@@ -536,8 +480,6 @@ export type CustomerUncheckedCreateWithoutEstimatesInput = {
   address?: string | null
   phone?: string | null
   email?: string | null
-  cpfCnpj?: string | null
-  type: $Enums.CustomerType
   organizationId?: string | null
 }
 
@@ -563,8 +505,6 @@ export type CustomerUpdateWithoutEstimatesInput = {
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cpfCnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
   organization?: Prisma.OrganizationUpdateOneWithoutCustomersNestedInput
 }
 
@@ -574,8 +514,6 @@ export type CustomerUncheckedUpdateWithoutEstimatesInput = {
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cpfCnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
   organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -585,8 +523,6 @@ export type CustomerCreateManyOrganizationInput = {
   address?: string | null
   phone?: string | null
   email?: string | null
-  cpfCnpj?: string | null
-  type: $Enums.CustomerType
 }
 
 export type CustomerUpdateWithoutOrganizationInput = {
@@ -595,8 +531,6 @@ export type CustomerUpdateWithoutOrganizationInput = {
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cpfCnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
   estimates?: Prisma.EstimateUpdateManyWithoutCustomerNestedInput
 }
 
@@ -606,8 +540,6 @@ export type CustomerUncheckedUpdateWithoutOrganizationInput = {
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cpfCnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
   estimates?: Prisma.EstimateUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
@@ -617,8 +549,6 @@ export type CustomerUncheckedUpdateManyWithoutOrganizationInput = {
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cpfCnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
 }
 
 
@@ -658,8 +588,6 @@ export type CustomerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   address?: boolean
   phone?: boolean
   email?: boolean
-  cpfCnpj?: boolean
-  type?: boolean
   organizationId?: boolean
   organization?: boolean | Prisma.Customer$organizationArgs<ExtArgs>
   estimates?: boolean | Prisma.Customer$estimatesArgs<ExtArgs>
@@ -672,8 +600,6 @@ export type CustomerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   address?: boolean
   phone?: boolean
   email?: boolean
-  cpfCnpj?: boolean
-  type?: boolean
   organizationId?: boolean
   organization?: boolean | Prisma.Customer$organizationArgs<ExtArgs>
 }, ExtArgs["result"]["customer"]>
@@ -684,8 +610,6 @@ export type CustomerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   address?: boolean
   phone?: boolean
   email?: boolean
-  cpfCnpj?: boolean
-  type?: boolean
   organizationId?: boolean
   organization?: boolean | Prisma.Customer$organizationArgs<ExtArgs>
 }, ExtArgs["result"]["customer"]>
@@ -696,12 +620,10 @@ export type CustomerSelectScalar = {
   address?: boolean
   phone?: boolean
   email?: boolean
-  cpfCnpj?: boolean
-  type?: boolean
   organizationId?: boolean
 }
 
-export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "address" | "phone" | "email" | "cpfCnpj" | "type" | "organizationId", ExtArgs["result"]["customer"]>
+export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "address" | "phone" | "email" | "organizationId", ExtArgs["result"]["customer"]>
 export type CustomerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.Customer$organizationArgs<ExtArgs>
   estimates?: boolean | Prisma.Customer$estimatesArgs<ExtArgs>
@@ -726,8 +648,6 @@ export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     address: string | null
     phone: string | null
     email: string | null
-    cpfCnpj: string | null
-    type: $Enums.CustomerType
     organizationId: string | null
   }, ExtArgs["result"]["customer"]>
   composites: {}
@@ -1159,8 +1079,6 @@ export interface CustomerFieldRefs {
   readonly address: Prisma.FieldRef<"Customer", 'String'>
   readonly phone: Prisma.FieldRef<"Customer", 'String'>
   readonly email: Prisma.FieldRef<"Customer", 'String'>
-  readonly cpfCnpj: Prisma.FieldRef<"Customer", 'String'>
-  readonly type: Prisma.FieldRef<"Customer", 'CustomerType'>
   readonly organizationId: Prisma.FieldRef<"Customer", 'String'>
 }
     
@@ -1380,7 +1298,7 @@ export type CustomerCreateArgs<ExtArgs extends runtime.Types.Extensions.Internal
   /**
    * The data needed to create a Customer.
    */
-  data: Prisma.XOR<Prisma.CustomerCreateInput, Prisma.CustomerUncheckedCreateInput>
+  data?: Prisma.XOR<Prisma.CustomerCreateInput, Prisma.CustomerUncheckedCreateInput>
 }
 
 /**

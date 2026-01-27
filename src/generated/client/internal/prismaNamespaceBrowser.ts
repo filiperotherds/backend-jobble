@@ -218,8 +218,6 @@ export const CustomerScalarFieldEnum = {
   address: 'address',
   phone: 'phone',
   email: 'email',
-  cpfCnpj: 'cpfCnpj',
-  type: 'type',
   organizationId: 'organizationId'
 } as const
 
@@ -228,7 +226,7 @@ export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typ
 
 export const EstimateItemScalarFieldEnum = {
   id: 'id',
-  description: 'description',
+  name: 'name',
   quantity: 'quantity',
   unitValue: 'unitValue',
   estimateId: 'estimateId',

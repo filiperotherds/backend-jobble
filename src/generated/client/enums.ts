@@ -21,14 +21,6 @@ export const PaymentMethod = {
 export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
 
 
-export const CustomerType = {
-  PF: 'PF',
-  PJ: 'PJ'
-} as const
-
-export type CustomerType = (typeof CustomerType)[keyof typeof CustomerType]
-
-
 export const TokenType = {
   PASSWORD_RECOVER: 'PASSWORD_RECOVER'
 } as const

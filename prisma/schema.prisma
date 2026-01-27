@@ -141,18 +141,19 @@ model Project {
 }
 
 model Estimate {
-  id          String         @id @default(uuid())
-  estimateNo  Int            @map("estimate_no")
-  description String?
-  status      EstimateStatus @default(PENDING)
-  createdAt   DateTime       @default(now()) @map("created_at")
-  validity    DateTime?
+  id               String         @id @default(uuid())
+  estimateNo       Int            @map("estimate_no")
+  description      String?
+  status           EstimateStatus @default(PENDING)
+  createdAt        DateTime       @default(now()) @map("created_at")
+  deliveryDeadline DateTime?      @map("delivery_deadline")
 
-  deliveryDeadline String?       @map("delivery_deadline")
-  warrantyTerms    String?       @map("warranty_terms")
-  paymentMethod    PaymentMethod @default(CASH) @map("payment_method")
-  installments     Int           @default(1)
-  downPayment      Decimal?      @map("down_payment") @db.Decimal(10, 2)
+  paymentMethod PaymentMethod @default(CASH) @map("payment_method")
+  installments  Int           @default(1)
+  downPayment   Decimal?      @map("down_payment") @db.Decimal(10, 2)
+
+  validity      DateTime?
+  warrantyTerms String?   @map("warranty_terms")
 
   organization   Organization? @relation(fields: [organizationId], references: [id])
   organizationId String?
@@ -166,13 +167,11 @@ model Estimate {
 }
 
 model Customer {
-  id      String       @id @default(uuid())
+  id      String  @id @default(uuid())
   name    String?
   address String?
   phone   String?
   email   String?
-  cpfCnpj String?
-  type    CustomerType
 
   organization   Organization? @relation(fields: [organizationId], references: [id])
   organizationId String?
@@ -185,9 +184,9 @@ model Customer {
 model EstimateItem {
   id String @id @default(uuid())
 
-  description String
-  quantity    Int
-  unitValue   Decimal @map("unit_value") @db.Decimal(10, 2)
+  name      String
+  quantity  Int
+  unitValue Decimal @map("unit_value") @db.Decimal(10, 2)
 
   estimate   Estimate @relation(fields: [estimateId], references: [id], onDelete: Cascade)
   estimateId String   @map("estimate_id")
@@ -220,11 +219,6 @@ enum PaymentMethod {
   CASH
   PIX
   TRANSFER
-}
-
-enum CustomerType {
-  PF
-  PJ
 }
 
 enum TokenType {
